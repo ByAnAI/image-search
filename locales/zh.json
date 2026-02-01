@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "店铺名称",
+    "storePlaceholder": "输入您的店铺名称",
+    "storeCategory": "店铺类别",
+    "selectCategory": "选择一个类别",
+    "email": "邮箱",
+    "emailPlaceholder": "输入您的邮箱",
+    "password": "密码",
+    "passwordHint": "密码至少需包含8个字符",
+    "submit": "注册"
+  },
+  "categories": {
+    "marbleSlabs": "大理石板",
+    "hardwoodFlooring": "硬木地板",
+    "ceramics": "陶瓷",
+    "granite": "花岗岩",
+    "fabric": "面料",
+    "carpetAndRugs": "地毯和地垫"
+  }
+}

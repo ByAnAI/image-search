@@ -1,0 +1,74 @@
+const ar = {
+  nav: {
+    appName: "بحث بالصورة",
+    search: "بحث",
+    login: "تسجيل الدخول",
+    dashboard: "لوحة التحكم",
+    forStores: "للمتاجر",
+  },
+  home: {
+    title: "اعثر على منتجات مشابهة في المتاجر",
+    subtitle:
+      "ارفع صورة وسنعرض لك منتجات مشابهة وأي متجر يبيعها. مجاني.",
+    forProducts: "ألواح رخام، أرضيات خشبية، سيراميك، جرانيت، أقمشة، سجاد وبسط.",
+    addYourStore: "أضف متجرك ومنتجاتك",
+    businessOwner: "صاحب متجر؟",
+    categoriesTitle: "فئات المنتجات",
+    categoriesSubtitle: "ابحث بالصورة عن هذه المنتجات في المتاجر.",
+    category: {
+      marbleSlabs: "ألواح رخام",
+      hardwoodFlooring: "أرضيات خشبية",
+      ceramics: "سيراميك",
+      granite: "جرانيت",
+      fabric: "أقمشة",
+      carpetAndRugs: "سجاد وبسط",
+    },
+  },
+  searchSection: {
+    uploadYourImage: "ارفع صورتك",
+    dragOrClick: "اسحب وأفلت أو انقر للرفع",
+    formats: "PNG, JPG, WebP حتى 10 ميجا",
+    searchSimilar: "بحث عن منتجات مشابهة",
+    chooseAnother: "اختر صورة أخرى",
+    uploadPreview: "معاينة",
+    removeImage: "إزالة الصورة",
+    searchFree:
+      "البحث مجاني. النتائج تعرض المنتجات المشابهة وأي متجر يبيعها.",
+  },
+  login: {
+    title: "تسجيل الدخول إلى متجرك",
+    subtitle: "أدر منتجاتك وليجدك المشترون.",
+    email: "البريد الإلكتروني",
+    password: "كلمة المرور",
+    submit: "تسجيل الدخول",
+    noAccount: "ليس لديك حساب؟",
+    registerLink: "تسجيل متجرك",
+    emailPlaceholder: "you@store.com",
+  },
+  register: {
+    title: "تسجيل متجرك",
+    subtitle: "أضف منتجاتك ليجدك المشترون عبر البحث بالصورة.",
+    storeName: "اسم المتجر",
+    email: "البريد الإلكتروني",
+    password: "كلمة المرور",
+    submit: "إنشاء حساب",
+    hasAccount: "لديك حساب بالفعل؟",
+    loginLink: "تسجيل الدخول",
+    storePlaceholder: "متجري",
+    emailPlaceholder: "you@store.com",
+    passwordHint: "8 أحرف على الأقل.",
+  },
+  storeDashboard: {
+    title: "لوحة تحكم المتجر",
+    subtitle: "ارفع وأدر صور منتجاتك ليجدك المشترون.",
+    logOut: "تسجيل الخروج",
+    addProductImage: "إضافة صورة منتج",
+    addProductDescription:
+      "ارفع صور المنتجات. سيجد المشترون منتجاتك عند البحث بصور مشابهة.",
+    dragOrClick: "اسحب وأفلت أو انقر للرفع",
+    yourProducts: "منتجاتك",
+    noProducts: "لا توجد منتجات بعد. ارفع صوراً أعلاه لإضافة أول منتج.",
+  },
+};
+
+export default ar;

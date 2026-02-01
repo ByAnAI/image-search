@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "Mağaza Adı",
+    "storePlaceholder": "Mağaza adınızı girin",
+    "storeCategory": "Mağaza Kategorisi",
+    "selectCategory": "Bir kategori seçin",
+    "email": "E-posta",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "password": "Şifre",
+    "passwordHint": "Şifre en az 8 karakter olmalıdır",
+    "submit": "Kayıt Ol"
+  },
+  "categories": {
+    "marbleSlabs": "Mermer Levhalar",
+    "hardwoodFlooring": "Ahşap Zemin",
+    "ceramics": "Seramik",
+    "granite": "Granit",
+    "fabric": "Kumaş",
+    "carpetAndRugs": "Halı ve Kilimler"
+  }
+}

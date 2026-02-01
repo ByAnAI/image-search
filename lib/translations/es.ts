@@ -1,0 +1,74 @@
+const es = {
+  nav: {
+    appName: "Búsqueda por imagen",
+    search: "Buscar",
+    login: "Iniciar sesión",
+    dashboard: "Panel",
+    forStores: "Para tiendas",
+  },
+  home: {
+    title: "Encuentra productos similares en tiendas",
+    subtitle:
+      "Sube una imagen y te mostraremos productos similares y en qué tienda comprarlos. Gratis.",
+    forProducts: "Láminas de mármol, suelos de madera, cerámicas, granito, tela, alfombras y tapetes.",
+    addYourStore: "Añade tu tienda y productos",
+    businessOwner: "¿Tienes una tienda?",
+    categoriesTitle: "Categorías de productos",
+    categoriesSubtitle: "Busca por imagen estos productos en tiendas.",
+    category: {
+      marbleSlabs: "Láminas de mármol",
+      hardwoodFlooring: "Suelos de madera",
+      ceramics: "Cerámicas",
+      granite: "Granito",
+      fabric: "Tela",
+      carpetAndRugs: "Alfombras y tapetes",
+    },
+  },
+  searchSection: {
+    uploadYourImage: "Sube tu imagen",
+    dragOrClick: "Arrastra y suelta o haz clic para subir",
+    formats: "PNG, JPG, WebP hasta 10 MB",
+    searchSimilar: "Buscar productos similares",
+    chooseAnother: "Elegir otra imagen",
+    uploadPreview: "Vista previa",
+    removeImage: "Quitar imagen",
+    searchFree:
+      "La búsqueda es gratis. Los resultados muestran productos similares y qué tienda los vende.",
+  },
+  login: {
+    title: "Iniciar sesión en tu tienda",
+    subtitle: "Gestiona tus productos y deja que los compradores te encuentren.",
+    email: "Correo electrónico",
+    password: "Contraseña",
+    submit: "Iniciar sesión",
+    noAccount: "¿No tienes cuenta?",
+    registerLink: "Registrar tu tienda",
+    emailPlaceholder: "tu@tienda.com",
+  },
+  register: {
+    title: "Registrar tu tienda",
+    subtitle: "Añade tus productos para que los compradores te encuentren por búsqueda por imagen.",
+    storeName: "Nombre de la tienda",
+    email: "Correo electrónico",
+    password: "Contraseña",
+    submit: "Crear cuenta",
+    hasAccount: "¿Ya tienes cuenta?",
+    loginLink: "Iniciar sesión",
+    storePlaceholder: "Mi tienda",
+    emailPlaceholder: "tu@tienda.com",
+    passwordHint: "Al menos 8 caracteres.",
+  },
+  storeDashboard: {
+    title: "Panel de tienda",
+    subtitle: "Sube y gestiona tus imágenes de productos para que los compradores te encuentren.",
+    logOut: "Cerrar sesión",
+    addProductImage: "Añadir imagen de producto",
+    addProductDescription:
+      "Sube fotos de productos. Los compradores encontrarán tus productos al buscar imágenes similares.",
+    dragOrClick: "Arrastra y suelta o haz clic para subir",
+    yourProducts: "Tus productos",
+    noProducts: "Aún no hay productos. Sube imágenes arriba para añadir el primero.",
+  },
+};
+
+export default es;

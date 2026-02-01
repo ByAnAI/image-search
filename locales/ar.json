@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "Nom du magasin",
+    "storePlaceholder": "Entrez le nom du magasin",
+    "storeCategory": "Catégorie du magasin",
+    "selectCategory": "Sélectionnez une catégorie",
+    "email": "Email",
+    "emailPlaceholder": "Entrez votre email",
+    "password": "Mot de passe",
+    "passwordHint": "Le mot de passe doit contenir au moins 8 caractères",
+    "submit": "S'inscrire"
+  },
+  "categories": {
+    "marbleSlabs": "Dalles de marbre",
+    "hardwoodFlooring": "Parquet en bois",
+    "ceramics": "Céramique",
+    "granite": "Granit",
+    "fabric": "Tissu",
+    "carpetAndRugs": "Tapis et moquette"
+  }
+}

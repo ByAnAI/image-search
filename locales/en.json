@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "اسم المتجر",
+    "storePlaceholder": "أدخل اسم المتجر",
+    "storeCategory": "فئة المتجر",
+    "selectCategory": "اختر فئة المتجر",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordHint": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
+    "submit": "تسجيل"
+  },
+  "categories": {
+    "marbleSlabs": "ألواح رخام",
+    "hardwoodFlooring": "أرضيات خشبية",
+    "ceramics": "سيراميك",
+    "granite": "جرانيت",
+    "fabric": "أقمشة",
+    "carpetAndRugs": "سجاد وموكيت"
+  }
+}

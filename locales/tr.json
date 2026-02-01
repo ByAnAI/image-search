@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "نام فروشگاه",
+    "storePlaceholder": "نام فروشگاه را وارد کنید",
+    "storeCategory": "دسته‌بندی فروشگاه",
+    "selectCategory": "یک دسته را انتخاب کنید",
+    "email": "ایمیل",
+    "emailPlaceholder": "ایمیل خود را وارد کنید",
+    "password": "رمز عبور",
+    "passwordHint": "رمز عبور باید حداقل ۸ کاراکتر باشد",
+    "submit": "ثبت‌نام"
+  },
+  "categories": {
+    "marbleSlabs": "سنگ مرمر",
+    "hardwoodFlooring": "کفپوش چوبی",
+    "ceramics": "سرامیک",
+    "granite": "گرانیت",
+    "fabric": "پارچه",
+    "carpetAndRugs": "فرش و قالیچه"
+  }
+}

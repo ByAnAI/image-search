@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* SciWiz-inspired palette */
+  --foreground: #0f172a;
+  --foreground-dark: #f0f0f0;
+  --background: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --primary: #c9a227;
+  --primary-hover: #a8821f;
+  --sciwiz-dark: #0c0c0f;
+  --sciwiz-navy: #111827;
+  --sciwiz-surface: #1a1d26;
+  --backdrop-overlay: rgba(255, 255, 255, 0.82);
+}
+
+body {
+  color: var(--foreground);
+  min-height: 100vh;
+  background-color: #e8eef4;
+  background-image:
+    linear-gradient(to bottom, var(--backdrop-overlay), rgba(255, 255, 255, 0.78)),
+    url("/background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* RTL: applied via document.documentElement.dir in LocaleContext */
+[dir="rtl"] body {
+  text-align: right;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

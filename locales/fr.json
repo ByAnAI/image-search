@@ -1,0 +1,21 @@
+{
+  "register": {
+    "storeName": "Nome del negozio",
+    "storePlaceholder": "Inserisci il nome del negozio",
+    "storeCategory": "Categoria del negozio",
+    "selectCategory": "Seleziona una categoria",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "password": "Password",
+    "passwordHint": "La password deve contenere almeno 8 caratteri",
+    "submit": "Registrati"
+  },
+  "categories": {
+    "marbleSlabs": "Lastre di marmo",
+    "hardwoodFlooring": "Pavimento in legno",
+    "ceramics": "Ceramica",
+    "granite": "Granito",
+    "fabric": "Tessuto",
+    "carpetAndRugs": "Tappeti e moquette"
+  }
+}

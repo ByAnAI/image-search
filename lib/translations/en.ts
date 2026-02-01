@@ -1,0 +1,73 @@
+const en = {
+  nav: {
+    appName: "Image Search",
+    search: "Search",
+    login: "Log in",
+    dashboard: "Dashboard",
+    forStores: "For stores",
+  },
+  home: {
+    title: "Find similar products in stores",
+    subtitle:
+      "Upload an image and we'll show you similar products and which store sells them. Free to use.",
+    forProducts: "For marble slabs, hardwood flooring, ceramics, granite, fabric, carpet and rugs.",
+    addYourStore: "Add your store and products",
+    businessOwner: "Business owner?",
+    categoriesTitle: "Product categories",
+    categoriesSubtitle: "Search by image for these products in stores.",
+    category: {
+      marbleSlabs: "Marble slabs",
+      hardwoodFlooring: "Hardwood flooring",
+      ceramics: "Ceramics",
+      granite: "Granite",
+      fabric: "Fabric",
+      carpetAndRugs: "Carpet and Rugs",
+    },
+  },
+  searchSection: {
+    uploadYourImage: "Upload your image",
+    dragOrClick: "Drag and drop or click to upload",
+    formats: "PNG, JPG, WebP up to 10MB",
+    searchSimilar: "Search similar products",
+    chooseAnother: "Choose another image",
+    uploadPreview: "Upload preview",
+    removeImage: "Remove image",
+    searchFree: "Search is free. Results will show similar products and which store sells them.",
+  },
+  login: {
+    title: "Log in to your store",
+    subtitle: "Manage your products and get found by shoppers.",
+    email: "Email",
+    password: "Password",
+    submit: "Log in",
+    noAccount: "Don't have an account?",
+    registerLink: "Register your store",
+    emailPlaceholder: "you@store.com",
+  },
+  register: {
+    title: "Register your store",
+    subtitle: "Add your products so shoppers can find you by image search.",
+    storeName: "Store name",
+    email: "Email",
+    password: "Password",
+    submit: "Create account",
+    hasAccount: "Already have an account?",
+    loginLink: "Log in",
+    storePlaceholder: "My Store",
+    emailPlaceholder: "you@store.com",
+    passwordHint: "At least 8 characters.",
+  },
+  storeDashboard: {
+    title: "Store dashboard",
+    subtitle: "Upload and manage your product images so shoppers can find you.",
+    logOut: "Log out",
+    addProductImage: "Add product image",
+    addProductDescription:
+      "Upload product photos. Shoppers will find your products when they search with similar images.",
+    dragOrClick: "Drag and drop or click to upload",
+    yourProducts: "Your products",
+    noProducts: "No products yet. Upload images above to add your first product.",
+  },
+};
+
+export default en;
