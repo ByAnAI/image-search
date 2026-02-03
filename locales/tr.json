@@ -6,6 +6,16 @@
     "dashboard": "Panel",
     "forStores": "Mağazalar için"
   },
+  "login": {
+    "title": "Tekrar hoş geldiniz",
+    "subtitle": "Mağazanızı yönetmek için giriş yapın.",
+    "email": "E-posta",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "password": "Şifre",
+    "submit": "Giriş",
+    "noAccount": "Hesabınız yok mu?",
+    "registerLink": "Kayıt Ol"
+  },
   "register": {
     "storeName": "Mağaza Adı",
     "storePlaceholder": "Mağaza adınızı girin",

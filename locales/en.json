@@ -6,6 +6,16 @@
     "dashboard": "Dashboard",
     "forStores": "For stores"
   },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to manage your store.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "submit": "Login",
+    "noAccount": "No account yet?",
+    "registerLink": "Register"
+  },
   "register": {
     "storeName": "Store name",
     "storePlaceholder": "Enter store name",

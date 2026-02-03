@@ -6,6 +6,16 @@
     "dashboard": "Tableau de bord",
     "forStores": "Pour les magasins"
   },
+  "login": {
+    "title": "Bon retour",
+    "subtitle": "Connectez-vous pour gérer votre magasin.",
+    "email": "Email",
+    "emailPlaceholder": "Entrez votre email",
+    "password": "Mot de passe",
+    "submit": "Connexion",
+    "noAccount": "Pas encore de compte ?",
+    "registerLink": "S'inscrire"
+  },
   "register": {
     "storeName": "Nom du magasin",
     "storePlaceholder": "Entrez le nom du magasin",

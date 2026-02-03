@@ -6,6 +6,16 @@
     "dashboard": "Dashboard",
     "forStores": "Per i negozi"
   },
+  "login": {
+    "title": "Bentornato",
+    "subtitle": "Accedi per gestire il tuo negozio.",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "password": "Password",
+    "submit": "Accedi",
+    "noAccount": "Non hai un account?",
+    "registerLink": "Registrati"
+  },
   "register": {
     "storeName": "Nome del negozio",
     "storePlaceholder": "Inserisci il nome del negozio",

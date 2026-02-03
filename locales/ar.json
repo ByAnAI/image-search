@@ -6,6 +6,16 @@
     "dashboard": "لوحة التحكم",
     "forStores": "للمتاجر"
   },
+  "login": {
+    "title": "مرحبًا بعودتك",
+    "subtitle": "سجّل الدخول لإدارة متجرك.",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "submit": "تسجيل الدخول",
+    "noAccount": "ليس لديك حساب؟",
+    "registerLink": "سجّل الآن"
+  },
   "register": {
     "storeName": "اسم المتجر",
     "storePlaceholder": "أدخل اسم المتجر",

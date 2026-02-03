@@ -6,6 +6,16 @@
     "dashboard": "仪表盘",
     "forStores": "商家入口"
   },
+  "login": {
+    "title": "欢迎回来",
+    "subtitle": "登录以管理您的店铺。",
+    "email": "邮箱",
+    "emailPlaceholder": "输入您的邮箱",
+    "password": "密码",
+    "submit": "登录",
+    "noAccount": "还没有账号？",
+    "registerLink": "注册"
+  },
   "register": {
     "storeName": "店铺名称",
     "storePlaceholder": "输入您的店铺名称",
