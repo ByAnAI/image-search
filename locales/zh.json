@@ -1,4 +1,11 @@
 {
+  "nav": {
+    "appName": "图片搜索",
+    "search": "搜索",
+    "login": "登录",
+    "dashboard": "仪表盘",
+    "forStores": "商家入口"
+  },
   "register": {
     "storeName": "店铺名称",
     "storePlaceholder": "输入您的店铺名称",

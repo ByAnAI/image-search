@@ -1,21 +1,28 @@
 {
+  "nav": {
+    "appName": "Image Search",
+    "search": "Search",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "forStores": "For stores"
+  },
   "register": {
-    "storeName": "اسم المتجر",
-    "storePlaceholder": "أدخل اسم المتجر",
-    "storeCategory": "فئة المتجر",
-    "selectCategory": "اختر فئة المتجر",
-    "email": "البريد الإلكتروني",
-    "emailPlaceholder": "أدخل البريد الإلكتروني",
-    "password": "كلمة المرور",
-    "passwordHint": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
-    "submit": "تسجيل"
+    "storeName": "Store name",
+    "storePlaceholder": "Enter store name",
+    "storeCategory": "Store category",
+    "selectCategory": "Select a category",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordHint": "Password must be at least 8 characters",
+    "submit": "Register"
   },
   "categories": {
-    "marbleSlabs": "ألواح رخام",
-    "hardwoodFlooring": "أرضيات خشبية",
-    "ceramics": "سيراميك",
-    "granite": "جرانيت",
-    "fabric": "أقمشة",
-    "carpetAndRugs": "سجاد وموكيت"
+    "marbleSlabs": "Marble slabs",
+    "hardwoodFlooring": "Hardwood flooring",
+    "ceramics": "Ceramics",
+    "granite": "Granite",
+    "fabric": "Fabric",
+    "carpetAndRugs": "Carpet and rugs"
   }
 }

@@ -1,21 +1,28 @@
 {
+  "nav": {
+    "appName": "Görsel Arama",
+    "search": "Ara",
+    "login": "Giriş",
+    "dashboard": "Panel",
+    "forStores": "Mağazalar için"
+  },
   "register": {
-    "storeName": "نام فروشگاه",
-    "storePlaceholder": "نام فروشگاه را وارد کنید",
-    "storeCategory": "دسته‌بندی فروشگاه",
-    "selectCategory": "یک دسته را انتخاب کنید",
-    "email": "ایمیل",
-    "emailPlaceholder": "ایمیل خود را وارد کنید",
-    "password": "رمز عبور",
-    "passwordHint": "رمز عبور باید حداقل ۸ کاراکتر باشد",
-    "submit": "ثبت‌نام"
+    "storeName": "Mağaza Adı",
+    "storePlaceholder": "Mağaza adınızı girin",
+    "storeCategory": "Mağaza Kategorisi",
+    "selectCategory": "Bir kategori seçin",
+    "email": "E-posta",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "password": "Şifre",
+    "passwordHint": "Şifre en az 8 karakter olmalıdır",
+    "submit": "Kayıt Ol"
   },
   "categories": {
-    "marbleSlabs": "سنگ مرمر",
-    "hardwoodFlooring": "کفپوش چوبی",
-    "ceramics": "سرامیک",
-    "granite": "گرانیت",
-    "fabric": "پارچه",
-    "carpetAndRugs": "فرش و قالیچه"
+    "marbleSlabs": "Mermer Levhalar",
+    "hardwoodFlooring": "Ahşap Zemin",
+    "ceramics": "Seramik",
+    "granite": "Granit",
+    "fabric": "Kumaş",
+    "carpetAndRugs": "Halı ve Kilimler"
   }
 }

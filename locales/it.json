@@ -1,21 +1,28 @@
 {
+  "nav": {
+    "appName": "Ricerca immagini",
+    "search": "Cerca",
+    "login": "Accedi",
+    "dashboard": "Dashboard",
+    "forStores": "Per i negozi"
+  },
   "register": {
-    "storeName": "Mağaza Adı",
-    "storePlaceholder": "Mağaza adınızı girin",
-    "storeCategory": "Mağaza Kategorisi",
-    "selectCategory": "Bir kategori seçin",
-    "email": "E-posta",
-    "emailPlaceholder": "E-posta adresinizi girin",
-    "password": "Şifre",
-    "passwordHint": "Şifre en az 8 karakter olmalıdır",
-    "submit": "Kayıt Ol"
+    "storeName": "Nome del negozio",
+    "storePlaceholder": "Inserisci il nome del negozio",
+    "storeCategory": "Categoria del negozio",
+    "selectCategory": "Seleziona una categoria",
+    "email": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "password": "Password",
+    "passwordHint": "La password deve contenere almeno 8 caratteri",
+    "submit": "Registrati"
   },
   "categories": {
-    "marbleSlabs": "Mermer Levhalar",
-    "hardwoodFlooring": "Ahşap Zemin",
-    "ceramics": "Seramik",
-    "granite": "Granit",
-    "fabric": "Kumaş",
-    "carpetAndRugs": "Halı ve Kilimler"
+    "marbleSlabs": "Lastre di marmo",
+    "hardwoodFlooring": "Pavimento in legno",
+    "ceramics": "Ceramica",
+    "granite": "Granito",
+    "fabric": "Tessuto",
+    "carpetAndRugs": "Tappeti e moquette"
   }
 }

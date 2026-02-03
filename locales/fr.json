@@ -1,21 +1,28 @@
 {
+  "nav": {
+    "appName": "Recherche d'images",
+    "search": "Rechercher",
+    "login": "Connexion",
+    "dashboard": "Tableau de bord",
+    "forStores": "Pour les magasins"
+  },
   "register": {
-    "storeName": "Nome del negozio",
-    "storePlaceholder": "Inserisci il nome del negozio",
-    "storeCategory": "Categoria del negozio",
-    "selectCategory": "Seleziona una categoria",
+    "storeName": "Nom du magasin",
+    "storePlaceholder": "Entrez le nom du magasin",
+    "storeCategory": "Catégorie du magasin",
+    "selectCategory": "Sélectionnez une catégorie",
     "email": "Email",
-    "emailPlaceholder": "Inserisci la tua email",
-    "password": "Password",
-    "passwordHint": "La password deve contenere almeno 8 caratteri",
-    "submit": "Registrati"
+    "emailPlaceholder": "Entrez votre email",
+    "password": "Mot de passe",
+    "passwordHint": "Le mot de passe doit contenir au moins 8 caractères",
+    "submit": "S'inscrire"
   },
   "categories": {
-    "marbleSlabs": "Lastre di marmo",
-    "hardwoodFlooring": "Pavimento in legno",
-    "ceramics": "Ceramica",
-    "granite": "Granito",
-    "fabric": "Tessuto",
-    "carpetAndRugs": "Tappeti e moquette"
+    "marbleSlabs": "Dalles de marbre",
+    "hardwoodFlooring": "Parquet en bois",
+    "ceramics": "Céramique",
+    "granite": "Granit",
+    "fabric": "Tissu",
+    "carpetAndRugs": "Tapis et moquette"
   }
 }
