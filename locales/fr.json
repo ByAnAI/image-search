@@ -39,9 +39,15 @@
     "password": "Mot de passe",
     "passwordHint": "Le mot de passe doit contenir au moins 8 caractères",
     "submit": "S'inscrire",
-    "verifyNotice": "Nous avons envoyé un email de vérification. Vérifiez une fois pour continuer.",
+    "verifyNotice": "Nous avons envoyé un code à 6 chiffres à votre email.",
     "verifyAction": "Vérifier l'email",
-    "verifySuccess": "Email vérifié. Vous pouvez vous connecter maintenant."
+    "verifySuccess": "Email vérifié. Vous pouvez vous connecter maintenant.",
+    "verifyCodeLabel": "Code de vérification",
+    "verifyCodePlaceholder": "Entrez le code à 6 chiffres",
+    "verifyResend": "Renvoyer le code",
+    "verifyInvalid": "Code incorrect. Réessayez ou renvoyez.",
+    "verifySending": "Envoi...",
+    "verifySendError": "Impossible d'envoyer l'email. Réessayez."
   },
   "countries": {
     "us": "États-Unis",

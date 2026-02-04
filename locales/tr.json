@@ -39,9 +39,15 @@
     "password": "Şifre",
     "passwordHint": "Şifre en az 8 karakter olmalıdır",
     "submit": "Kayıt Ol",
-    "verifyNotice": "Doğrulama e-postası gönderdik. Devam etmek için bir kez doğrulayın.",
+    "verifyNotice": "E-postanıza 6 haneli bir kod gönderdik.",
     "verifyAction": "E-postayı doğrula",
-    "verifySuccess": "E-posta doğrulandı. Şimdi giriş yapabilirsiniz."
+    "verifySuccess": "E-posta doğrulandı. Şimdi giriş yapabilirsiniz.",
+    "verifyCodeLabel": "Doğrulama kodu",
+    "verifyCodePlaceholder": "6 haneli kodu girin",
+    "verifyResend": "Kodu yeniden gönder",
+    "verifyInvalid": "Kod yanlış. Tekrar deneyin veya yeniden gönderin.",
+    "verifySending": "Gönderiliyor...",
+    "verifySendError": "E-posta gönderilemedi. Tekrar deneyin."
   },
   "countries": {
     "us": "Amerika Birleşik Devletleri",
