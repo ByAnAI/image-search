@@ -7,9 +7,20 @@ export function LoginForm() {
   const { t } = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const normalizedEmail = email.trim().toLowerCase();
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("image-search-verified-emails");
+      const map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
+      if (!map[normalizedEmail]) {
+        setError(t("login.verifyRequired"));
+        return;
+      }
+    }
+    setError("");
     // Placeholder: will wire to auth in a later step
     console.log("Login", { email, password });
   };
@@ -52,6 +63,7 @@ export function LoginForm() {
       >
         {t("login.submit")}
       </button>
+      {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </form>
   );
 }

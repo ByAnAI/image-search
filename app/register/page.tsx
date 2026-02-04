@@ -11,7 +11,6 @@ export default function RegisterPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-slate-900">{t("register.title")}</h1>
-          <p className="text-slate-600 mt-1">{t("register.subtitle")}</p>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
