@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "appName": "Поиск по изображениям",
+    "search": "Поиск",
+    "login": "Вход",
+    "dashboard": "Панель",
+    "forStores": "Для магазинов"
+  },
+  "login": {
+    "title": "С возвращением",
+    "subtitle": "Войдите, чтобы управлять своим магазином.",
+    "email": "Эл. почта",
+    "emailPlaceholder": "Введите эл. почту",
+    "password": "Пароль",
+    "submit": "Войти",
+    "noAccount": "Нет аккаунта?",
+    "registerLink": "Зарегистрироваться"
+  },
+  "register": {
+    "storeName": "Название магазина",
+    "storePlaceholder": "Введите название магазина",
+    "storeCategory": "Категория магазина",
+    "selectCategory": "Выберите категорию",
+    "email": "Эл. почта",
+    "emailPlaceholder": "Введите эл. почту",
+    "password": "Пароль",
+    "passwordHint": "Пароль должен содержать минимум 8 символов",
+    "submit": "Регистрация"
+  },
+  "categories": {
+    "marbleSlabs": "Мраморные плиты",
+    "hardwoodFlooring": "Деревянные полы",
+    "ceramics": "Керамика",
+    "granite": "Гранит",
+    "fabric": "Ткань",
+    "carpetAndRugs": "Ковры и коврики"
+  }
+}
