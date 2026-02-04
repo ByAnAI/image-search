@@ -39,8 +39,14 @@
     "password": "Password",
     "passwordHint": "Password must be at least 8 characters",
     "submit": "Register",
-    "verifyNotice": "We sent a verification email. Verify once to continue.",
+    "verifyNotice": "We sent a 6-digit code to your email.",
+    "verifyCodeLabel": "Verification code",
+    "verifyCodePlaceholder": "Enter 6-digit code",
     "verifyAction": "Verify email",
+    "verifyResend": "Resend code",
+    "verifySending": "Sending...",
+    "verifySendError": "Could not send email. Try again.",
+    "verifyInvalid": "Code is not correct. Try again or resend.",
     "verifySuccess": "Email verified. You can log in now."
   },
   "countries": {
