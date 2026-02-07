@@ -14,7 +14,7 @@ export default function StoreAuthPage() {
   const [success, setSuccess] = useState<Mode | null>(null);
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-primary-50 via-white to-sky-50">
+    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-blue-100 to-sky-100">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-slate-900">{t("storeAuth.title")}</h1>
@@ -30,7 +30,7 @@ export default function StoreAuthPage() {
             }}
             className={`flex-1 text-center py-2.5 text-sm font-semibold transition-colors ${
               mode === "signin"
-                ? "bg-primary-500 text-sciwiz-dark"
+                ? "bg-green-500 text-white"
                 : "text-slate-600 hover:bg-slate-50"
             }`}
           >
@@ -44,7 +44,7 @@ export default function StoreAuthPage() {
             }}
             className={`flex-1 text-center py-2.5 text-sm font-semibold transition-colors ${
               mode === "signup"
-                ? "bg-primary-500 text-sciwiz-dark"
+                ? "bg-green-500 text-white"
                 : "text-slate-600 hover:bg-slate-50"
             }`}
           >

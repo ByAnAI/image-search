@@ -68,7 +68,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       </div>
       <button
         type="submit"
-        className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors"
+        className="w-full py-3 rounded-lg font-semibold bg-green-500 text-white hover:bg-green-600 transition-colors"
       >
         {t("login.submit")}
       </button>
