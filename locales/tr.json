@@ -50,7 +50,9 @@
     "verifyResend": "Kodu yeniden gönder",
     "verifyInvalid": "Kod yanlış. Tekrar deneyin veya yeniden gönderin.",
     "verifySending": "Gönderiliyor...",
-    "verifySendError": "E-posta gönderilemedi. Tekrar deneyin."
+    "verifySendError": "E-posta gönderilemedi. Tekrar deneyin.",
+    "hasAccount": "Zaten hesabınız var mı?",
+    "loginLink": "Giriş yap"
   },
   "countries": {
     "us": "Amerika Birleşik Devletleri",
@@ -97,5 +99,53 @@
     "submit": "Sıfırlama bağlantısı gönder",
     "sentNotice": "E-posta kayıtlıysa bir bağlantı alırsınız.",
     "backToLogin": "Girişe dön"
+  },
+  "storeAuth": {
+    "title": "Mağaza erişimi",
+    "subtitle": "Mağazanızı yönetmek için giriş yapın veya kayıt olun.",
+    "signInTab": "Giriş",
+    "signUpTab": "Kayıt Ol",
+    "signInSuccess": "Başarıyla giriş yapıldı.",
+    "signUpSuccess": "Hesap başarıyla doğrulandı.",
+    "completeProfile": "Mağaza profilini tamamla",
+    "backToSearch": "Aramaya dön"
+  },
+  "storeProfile": {
+    "title": "Mağaza profili",
+    "loading": "Profil yükleniyor...",
+    "signInFirst": "Profili güncellemek için önce giriş yapın.",
+    "missingEmail": "E-posta eksik.",
+    "missingFields": "Mağaza adı, ülke ve şehir doldurun.",
+    "save": "Profili kaydet",
+    "saving": "Kaydediliyor...",
+    "saveSuccess": "Profil kaydedildi.",
+    "saveError": "Profil kaydedilemedi.",
+    "loadError": "Profil yüklenemedi."
+  },
+  "home": {
+    "businessOwner": "Mağaza sahibi misiniz?",
+    "addYourStore": "Mağazanızı ekleyin",
+    "categoriesTitle": "Kategorileri keşfedin",
+    "categoriesSubtitle": "Popüler malzemeler arasında arayın."
+  },
+  "searchSection": {
+    "uploadYourImage": "Görselinizi yükleyin",
+    "dragOrClick": "Sürükleyip bırakın veya tıklayın",
+    "formats": "JPG, PNG veya WEBP (10MB'a kadar)",
+    "uploadPreview": "Yüklenen görsel önizleme",
+    "removeImage": "Görseli kaldır",
+    "searchSimilar": "Benzer ürünleri ara",
+    "chooseAnother": "Başka bir görsel seç",
+    "searchFree": "Herkes için ücretsiz görsel arama"
+  },
+  "storeDashboard": {
+    "title": "Mağaza paneli",
+    "subtitle": "Mağazanızı ve ürünleri yönetin",
+    "logOut": "Çıkış yap",
+    "addProductImage": "Ürün görseli ekle",
+    "addProductDescription": "Ürünlerin aranabilir olması için görsel yükleyin.",
+    "dragOrClick": "Bir görsel sürükleyin veya tıklayın",
+    "yourProducts": "Ürünleriniz",
+    "noProducts": "Henüz ürün yok."
   }
 }

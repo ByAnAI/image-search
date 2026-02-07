@@ -1,11 +1,171 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import countries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json";
+import arLocale from "i18n-iso-countries/langs/ar.json";
+import frLocale from "i18n-iso-countries/langs/fr.json";
+import itLocale from "i18n-iso-countries/langs/it.json";
+import trLocale from "i18n-iso-countries/langs/tr.json";
+import faLocale from "i18n-iso-countries/langs/fa.json";
+import zhLocale from "i18n-iso-countries/langs/zh.json";
+import deLocale from "i18n-iso-countries/langs/de.json";
+import ruLocale from "i18n-iso-countries/langs/ru.json";
+import { City, Country } from "country-state-city";
 import { useLocale } from "@/contexts/LocaleContext";
 
+countries.registerLocale(enLocale);
+countries.registerLocale(arLocale);
+countries.registerLocale(frLocale);
+countries.registerLocale(itLocale);
+countries.registerLocale(trLocale);
+countries.registerLocale(faLocale);
+countries.registerLocale(zhLocale);
+countries.registerLocale(deLocale);
+countries.registerLocale(ruLocale);
+
+const ISO_LOCALE_MAP: Record<string, string> = {
+  ar: "ar",
+  en: "en",
+  fr: "fr",
+  it: "it",
+  tr: "tr",
+  fa: "fa",
+  zh: "zh",
+  gr: "de",
+  ru: "ru",
+};
+
+type StoreProfile = {
+  email: string;
+  storeName: string;
+  country: string;
+  city: string;
+  website?: string;
+  phone?: string;
+};
+
 export function StoreDashboard() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const [email, setEmail] = useState("");
+  const [storeName, setStoreName] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [website, setWebsite] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneFromProfile, setPhoneFromProfile] = useState("");
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [profileMessage, setProfileMessage] = useState("");
+  const [profileError, setProfileError] = useState("");
   const [dragActive, setDragActive] = useState(false);
+
+  const resolvedLocale = ISO_LOCALE_MAP[locale] ?? "en";
+  const countryOptions = useMemo(() => {
+    const names = countries.getNames(resolvedLocale, { select: "official" });
+    return Object.entries(names)
+      .map(([code, name]) => ({ code, name }))
+      .sort((a, b) => a.name.localeCompare(b.name, resolvedLocale));
+  }, [resolvedLocale]);
+
+  const selectedCountry = useMemo(
+    () => (country ? Country.getCountryByCode(country) ?? null : null),
+    [country]
+  );
+
+  const cityOptions = useMemo(() => {
+    if (!country) return [];
+    const cities = City.getCitiesOfCountry(country) ?? [];
+    return [...cities].sort((a, b) => a.name.localeCompare(b.name, resolvedLocale));
+  }, [country, resolvedLocale]);
+
+  useEffect(() => {
+    const storedEmail =
+      typeof window !== "undefined" ? localStorage.getItem("store-auth-email") ?? "" : "";
+    setEmail(storedEmail);
+    if (!storedEmail) {
+      setLoadingProfile(false);
+      return;
+    }
+    const loadProfile = async () => {
+      try {
+        const response = await fetch(
+          `/api/store/profile?email=${encodeURIComponent(storedEmail)}`
+        );
+        if (!response.ok) return;
+        const data = (await response.json()) as { profile?: StoreProfile };
+        if (!data.profile) return;
+        setStoreName(data.profile.storeName ?? "");
+        setCountry(data.profile.country ?? "");
+        setCity(data.profile.city ?? "");
+        setWebsite(data.profile.website ?? "");
+        setPhoneFromProfile(data.profile.phone ?? "");
+      } catch {
+        setProfileError(t("storeProfile.loadError"));
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+    loadProfile();
+  }, [t]);
+
+  useEffect(() => {
+    if (!phoneFromProfile || phoneNumber) return;
+    if (selectedCountry?.phonecode) {
+      const prefix = `+${selectedCountry.phonecode}`;
+      setPhoneNumber(
+        phoneFromProfile.startsWith(prefix)
+          ? phoneFromProfile.slice(prefix.length)
+          : phoneFromProfile
+      );
+    } else {
+      setPhoneNumber(phoneFromProfile);
+    }
+  }, [phoneFromProfile, phoneNumber, selectedCountry?.phonecode]);
+
+  const handleSaveProfile = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setProfileError("");
+    setProfileMessage("");
+    if (!email) {
+      setProfileError(t("storeProfile.missingEmail"));
+      return;
+    }
+    if (!country || !city || !storeName) {
+      setProfileError(t("storeProfile.missingFields"));
+      return;
+    }
+    setSavingProfile(true);
+    try {
+    const fullPhone =
+      phoneNumber && phoneNumber.startsWith("+")
+        ? phoneNumber
+        : phoneNumber && selectedCountry?.phonecode
+          ? `+${selectedCountry.phonecode}${phoneNumber}`
+          : phoneNumber;
+      const response = await fetch("/api/store/profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          storeName,
+          country,
+          city,
+          website,
+          phone: fullPhone,
+        }),
+      });
+      if (!response.ok) {
+        setProfileError(t("storeProfile.saveError"));
+        return;
+      }
+      setProfileMessage(t("storeProfile.saveSuccess"));
+    } catch {
+      setProfileError(t("storeProfile.saveError"));
+    } finally {
+      setSavingProfile(false);
+    }
+  };
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -26,6 +186,133 @@ export function StoreDashboard() {
 
   return (
     <div className="space-y-8">
+      <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+        <h2 className="text-lg font-semibold text-slate-800 mb-4">
+          {t("storeProfile.title")}
+        </h2>
+        {loadingProfile ? (
+          <p className="text-slate-500 text-sm">{t("storeProfile.loading")}</p>
+        ) : !email ? (
+          <p className="text-slate-500 text-sm">{t("storeProfile.signInFirst")}</p>
+        ) : (
+          <form onSubmit={handleSaveProfile} className="space-y-5">
+            <div>
+              <label htmlFor="profile-email" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.email")}
+              </label>
+              <input
+                id="profile-email"
+                type="email"
+                value={email}
+                readOnly
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-100 text-slate-600"
+              />
+            </div>
+            <div>
+              <label htmlFor="profile-store" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.storeName")}
+              </label>
+              <input
+                id="profile-store"
+                type="text"
+                value={storeName}
+                onChange={(e) => setStoreName(e.target.value)}
+                required
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                placeholder={t("register.storePlaceholder")}
+              />
+            </div>
+            <div>
+              <label htmlFor="profile-country" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.country")}
+              </label>
+              <select
+                id="profile-country"
+                value={country}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                  setCity("");
+                }}
+                required
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+              >
+                <option value="" disabled>
+                  {t("register.selectCountry")}
+                </option>
+                {countryOptions.map((option) => (
+                  <option key={option.code} value={option.code}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="profile-city" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.city")}
+              </label>
+              <select
+                id="profile-city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+                disabled={!selectedCountry}
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors disabled:bg-slate-100 disabled:text-slate-500"
+              >
+                <option value="" disabled>
+                  {t("register.selectCity")}
+                </option>
+                {cityOptions.map((option) => (
+                  <option key={option.name} value={option.name}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="profile-website" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.website")}
+              </label>
+              <input
+                id="profile-website"
+                type="url"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                placeholder={t("register.websitePlaceholder")}
+              />
+            </div>
+            <div>
+              <label htmlFor="profile-phone" className="block text-sm font-medium text-slate-700 mb-1">
+                {t("register.phone")}
+              </label>
+              <div className="flex">
+                <span className="inline-flex items-center px-3 rounded-l-lg border border-slate-300 bg-slate-100 text-slate-700 text-sm">
+                  {selectedCountry?.phonecode ? `+${selectedCountry.phonecode}` : "+"}
+                </span>
+                <input
+                  id="profile-phone"
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-r-lg border border-slate-300 border-l-0 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                  placeholder={t("register.phonePlaceholder")}
+                />
+              </div>
+            </div>
+            {profileError ? <p className="text-sm text-red-600">{profileError}</p> : null}
+            {profileMessage ? (
+              <p className="text-sm text-emerald-600">{profileMessage}</p>
+            ) : null}
+            <button
+              type="submit"
+              disabled={savingProfile}
+              className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors disabled:opacity-70"
+            >
+              {savingProfile ? t("storeProfile.saving") : t("storeProfile.save")}
+            </button>
+          </form>
+        )}
+      </section>
       <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
         <h2 className="text-lg font-semibold text-slate-800 mb-4">
           {t("storeDashboard.addProductImage")}

@@ -40,8 +40,8 @@ export function SearchSection() {
   }, [preview]);
 
   return (
-    <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 sm:p-10">
-      <h2 className="text-lg font-semibold text-slate-800 mb-4">
+    <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+      <h2 className="text-lg font-semibold text-slate-800 mb-3">
         {t("searchSection.uploadYourImage")}
       </h2>
 
@@ -52,7 +52,7 @@ export function SearchSection() {
           onDragOver={handleDrag}
           onDrop={handleDrop}
           className={`
-            flex flex-col items-center justify-center w-full h-56 rounded-xl border-2 border-dashed cursor-pointer transition-colors
+            flex flex-col items-center justify-center w-full h-40 rounded-xl border-2 border-dashed cursor-pointer transition-colors
             ${dragActive ? "border-primary-500 bg-primary-50" : "border-slate-300 hover:border-slate-400 hover:bg-slate-50"}
           `}
         >
@@ -63,7 +63,7 @@ export function SearchSection() {
             className="hidden"
           />
           <svg
-            className="w-12 h-12 text-slate-400 mb-3"
+            className="w-8 h-8 text-slate-400 mb-1 -mt-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -75,10 +75,10 @@ export function SearchSection() {
               d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
             />
           </svg>
-          <span className="text-slate-600 font-medium">
+          <span className="text-slate-600 font-medium -mt-1">
             {t("searchSection.dragOrClick")}
           </span>
-          <span className="text-slate-400 text-sm mt-1">
+          <span className="text-slate-400 text-xs mt-1">
             {t("searchSection.formats")}
           </span>
         </label>
@@ -123,7 +123,7 @@ export function SearchSection() {
         </div>
       )}
 
-      <p className="mt-4 text-slate-500 text-sm">
+      <p className="mt-3 text-slate-500 text-sm">
         {t("searchSection.searchFree")}
       </p>
     </section>

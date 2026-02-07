@@ -50,7 +50,9 @@
     "verifyResend": "Invia di nuovo il codice",
     "verifyInvalid": "Codice non corretto. Riprova o invia di nuovo.",
     "verifySending": "Invio...",
-    "verifySendError": "Impossibile inviare l'email. Riprova."
+    "verifySendError": "Impossibile inviare l'email. Riprova.",
+    "hasAccount": "Hai già un account?",
+    "loginLink": "Accedi"
   },
   "countries": {
     "us": "Stati Uniti",
@@ -97,5 +99,53 @@
     "submit": "Invia link di reset",
     "sentNotice": "Se l'email esiste, riceverai un link di reset.",
     "backToLogin": "Torna al login"
+  },
+  "storeAuth": {
+    "title": "Accesso negozio",
+    "subtitle": "Accedi o registrati per gestire il tuo negozio.",
+    "signInTab": "Accedi",
+    "signUpTab": "Registrati",
+    "signInSuccess": "Accesso riuscito.",
+    "signUpSuccess": "Account verificato con successo.",
+    "completeProfile": "Completa il profilo del negozio",
+    "backToSearch": "Torna alla ricerca"
+  },
+  "storeProfile": {
+    "title": "Profilo del negozio",
+    "loading": "Caricamento profilo...",
+    "signInFirst": "Accedi prima di aggiornare il profilo.",
+    "missingEmail": "Email mancante.",
+    "missingFields": "Compila nome negozio, paese e città.",
+    "save": "Salva profilo",
+    "saving": "Salvataggio...",
+    "saveSuccess": "Profilo salvato.",
+    "saveError": "Impossibile salvare il profilo.",
+    "loadError": "Impossibile caricare il profilo."
+  },
+  "home": {
+    "businessOwner": "Proprietario di negozio?",
+    "addYourStore": "Aggiungi il tuo negozio",
+    "categoriesTitle": "Esplora le categorie",
+    "categoriesSubtitle": "Cerca tra materiali popolari."
+  },
+  "searchSection": {
+    "uploadYourImage": "Carica la tua immagine",
+    "dragOrClick": "Trascina o fai clic per caricare",
+    "formats": "JPG, PNG o WEBP fino a 10MB",
+    "uploadPreview": "Anteprima immagine caricata",
+    "removeImage": "Rimuovi immagine",
+    "searchSimilar": "Cerca prodotti simili",
+    "chooseAnother": "Scegli un'altra immagine",
+    "searchFree": "Ricerca immagini gratuita per tutti"
+  },
+  "storeDashboard": {
+    "title": "Dashboard del negozio",
+    "subtitle": "Gestisci il tuo negozio e i prodotti",
+    "logOut": "Esci",
+    "addProductImage": "Aggiungi immagine prodotto",
+    "addProductDescription": "Carica immagini per rendere i prodotti ricercabili.",
+    "dragOrClick": "Trascina un'immagine o fai clic per caricare",
+    "yourProducts": "I tuoi prodotti",
+    "noProducts": "Nessun prodotto al momento."
   }
 }

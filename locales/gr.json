@@ -50,7 +50,9 @@
     "verifyResend": "Code erneut senden",
     "verifyInvalid": "Code ist falsch. Bitte erneut versuchen oder neu senden.",
     "verifySending": "Wird gesendet...",
-    "verifySendError": "E-Mail konnte nicht gesendet werden. Bitte erneut versuchen."
+    "verifySendError": "E-Mail konnte nicht gesendet werden. Bitte erneut versuchen.",
+    "hasAccount": "Schon ein Konto?",
+    "loginLink": "Anmelden"
   },
   "countries": {
     "us": "USA",
@@ -97,5 +99,53 @@
     "submit": "Reset-Link senden",
     "sentNotice": "Wenn die E-Mail existiert, erhalten Sie einen Reset-Link.",
     "backToLogin": "Zurück zum Login"
+  },
+  "storeAuth": {
+    "title": "Shop-Zugang",
+    "subtitle": "Melden Sie sich an oder registrieren Sie sich, um Ihren Shop zu verwalten.",
+    "signInTab": "Anmelden",
+    "signUpTab": "Registrieren",
+    "signInSuccess": "Erfolgreich angemeldet.",
+    "signUpSuccess": "Konto erfolgreich bestätigt.",
+    "completeProfile": "Shop-Profil vervollständigen",
+    "backToSearch": "Zurück zur Suche"
+  },
+  "storeProfile": {
+    "title": "Shop-Profil",
+    "loading": "Profil wird geladen...",
+    "signInFirst": "Bitte zuerst anmelden, um das Profil zu aktualisieren.",
+    "missingEmail": "E-Mail fehlt.",
+    "missingFields": "Bitte Shopname, Land und Stadt ausfüllen.",
+    "save": "Profil speichern",
+    "saving": "Wird gespeichert...",
+    "saveSuccess": "Profil gespeichert.",
+    "saveError": "Profil konnte nicht gespeichert werden.",
+    "loadError": "Profil konnte nicht geladen werden."
+  },
+  "home": {
+    "businessOwner": "Shop-Besitzer?",
+    "addYourStore": "Shop hinzufügen",
+    "categoriesTitle": "Kategorien entdecken",
+    "categoriesSubtitle": "Suche nach beliebten Materialien."
+  },
+  "searchSection": {
+    "uploadYourImage": "Bild hochladen",
+    "dragOrClick": "Ziehen & ablegen oder klicken zum Hochladen",
+    "formats": "JPG, PNG oder WEBP bis 10 MB",
+    "uploadPreview": "Vorschau des hochgeladenen Bildes",
+    "removeImage": "Bild entfernen",
+    "searchSimilar": "Ähnliche Produkte suchen",
+    "chooseAnother": "Anderes Bild wählen",
+    "searchFree": "Kostenlose Bildsuche für alle"
+  },
+  "storeDashboard": {
+    "title": "Shop-Dashboard",
+    "subtitle": "Verwalten Sie Ihren Shop und Produkte",
+    "logOut": "Abmelden",
+    "addProductImage": "Produktbild hinzufügen",
+    "addProductDescription": "Bilder hochladen, damit Produkte gefunden werden.",
+    "dragOrClick": "Bild ziehen oder klicken zum Hochladen",
+    "yourProducts": "Ihre Produkte",
+    "noProducts": "Noch keine Produkte."
   }
 }

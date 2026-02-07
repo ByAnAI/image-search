@@ -50,7 +50,9 @@
     "verifyResend": "Renvoyer le code",
     "verifyInvalid": "Code incorrect. Réessayez ou renvoyez.",
     "verifySending": "Envoi...",
-    "verifySendError": "Impossible d'envoyer l'email. Réessayez."
+    "verifySendError": "Impossible d'envoyer l'email. Réessayez.",
+    "hasAccount": "Vous avez déjà un compte ?",
+    "loginLink": "Se connecter"
   },
   "countries": {
     "us": "États-Unis",
@@ -97,5 +99,53 @@
     "submit": "Envoyer le lien",
     "sentNotice": "Si l'email existe, vous recevrez un lien de réinitialisation.",
     "backToLogin": "Retour à la connexion"
+  },
+  "storeAuth": {
+    "title": "Accès magasin",
+    "subtitle": "Connectez-vous ou inscrivez-vous pour gérer votre magasin.",
+    "signInTab": "Connexion",
+    "signUpTab": "S'inscrire",
+    "signInSuccess": "Connexion réussie.",
+    "signUpSuccess": "Compte vérifié avec succès.",
+    "completeProfile": "Terminer le profil du magasin",
+    "backToSearch": "Retour à la recherche"
+  },
+  "storeProfile": {
+    "title": "Profil du magasin",
+    "loading": "Chargement du profil...",
+    "signInFirst": "Connectez-vous pour mettre à jour le profil.",
+    "missingEmail": "Email manquant.",
+    "missingFields": "Veuillez remplir le nom du magasin, le pays et la ville.",
+    "save": "Enregistrer le profil",
+    "saving": "Enregistrement...",
+    "saveSuccess": "Profil enregistré.",
+    "saveError": "Impossible d'enregistrer le profil.",
+    "loadError": "Impossible de charger le profil."
+  },
+  "home": {
+    "businessOwner": "Propriétaire de magasin ?",
+    "addYourStore": "Ajoutez votre magasin",
+    "categoriesTitle": "Explorer les catégories",
+    "categoriesSubtitle": "Recherchez parmi des matériaux populaires."
+  },
+  "searchSection": {
+    "uploadYourImage": "Téléversez votre image",
+    "dragOrClick": "Glissez-déposez ou cliquez pour téléverser",
+    "formats": "JPG, PNG ou WEBP jusqu'à 10 Mo",
+    "uploadPreview": "Aperçu de l'image",
+    "removeImage": "Supprimer l'image",
+    "searchSimilar": "Rechercher des produits similaires",
+    "chooseAnother": "Choisir une autre image",
+    "searchFree": "Recherche d'images gratuite pour tous"
+  },
+  "storeDashboard": {
+    "title": "Tableau de bord du magasin",
+    "subtitle": "Gérez votre magasin et vos produits",
+    "logOut": "Se déconnecter",
+    "addProductImage": "Ajouter une image produit",
+    "addProductDescription": "Téléversez des images pour rendre vos produits recherchables.",
+    "dragOrClick": "Glissez une image ou cliquez pour téléverser",
+    "yourProducts": "Vos produits",
+    "noProducts": "Aucun produit pour l'instant."
   }
 }

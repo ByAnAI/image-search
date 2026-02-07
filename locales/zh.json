@@ -50,7 +50,9 @@
     "verifyResend": "重新发送验证码",
     "verifyInvalid": "验证码不正确。请重试或重新发送。",
     "verifySending": "发送中...",
-    "verifySendError": "邮件发送失败。请重试。"
+    "verifySendError": "邮件发送失败。请重试。",
+    "hasAccount": "已有账号？",
+    "loginLink": "登录"
   },
   "countries": {
     "us": "美国",
@@ -97,5 +99,53 @@
     "submit": "发送重置链接",
     "sentNotice": "如果邮箱存在，您将收到重置链接。",
     "backToLogin": "返回登录"
+  },
+  "storeAuth": {
+    "title": "商家入口",
+    "subtitle": "登录或注册以管理您的店铺。",
+    "signInTab": "登录",
+    "signUpTab": "注册",
+    "signInSuccess": "登录成功。",
+    "signUpSuccess": "账号验证成功。",
+    "completeProfile": "完成店铺资料",
+    "backToSearch": "返回搜索"
+  },
+  "storeProfile": {
+    "title": "店铺资料",
+    "loading": "正在加载资料...",
+    "signInFirst": "请先登录以更新店铺资料。",
+    "missingEmail": "邮箱缺失。",
+    "missingFields": "请填写店铺名称、国家和城市。",
+    "save": "保存资料",
+    "saving": "保存中...",
+    "saveSuccess": "资料已保存。",
+    "saveError": "保存失败。",
+    "loadError": "加载失败。"
+  },
+  "home": {
+    "businessOwner": "您是商家吗？",
+    "addYourStore": "添加您的店铺",
+    "categoriesTitle": "探索分类",
+    "categoriesSubtitle": "搜索热门材料。"
+  },
+  "searchSection": {
+    "uploadYourImage": "上传您的图片",
+    "dragOrClick": "拖拽或点击上传",
+    "formats": "JPG、PNG 或 WEBP（最大 10MB）",
+    "uploadPreview": "已上传图片预览",
+    "removeImage": "移除图片",
+    "searchSimilar": "搜索相似产品",
+    "chooseAnother": "选择另一张图片",
+    "searchFree": "所有人都可免费搜索图片"
+  },
+  "storeDashboard": {
+    "title": "商家面板",
+    "subtitle": "管理您的店铺和产品",
+    "logOut": "退出登录",
+    "addProductImage": "添加产品图片",
+    "addProductDescription": "上传图片以便搜索您的产品。",
+    "dragOrClick": "拖拽图片或点击上传",
+    "yourProducts": "您的产品",
+    "noProducts": "暂无产品。"
   }
 }

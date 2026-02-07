@@ -13,10 +13,7 @@ export default function StoreDashboardPage() {
           <h1 className="text-2xl font-bold text-slate-900">{t("storeDashboard.title")}</h1>
           <p className="text-slate-600 mt-1">{t("storeDashboard.subtitle")}</p>
         </div>
-        <Link
-          href="/login"
-          className="text-sm text-slate-600 hover:text-slate-900"
-        >
+        <Link href="/store/auth" className="text-sm text-slate-600 hover:text-slate-900">
           {t("storeDashboard.logOut")}
         </Link>
       </div>

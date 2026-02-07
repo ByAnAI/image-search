@@ -50,7 +50,9 @@
     "verifyResend": "إعادة إرسال الرمز",
     "verifyInvalid": "الرمز غير صحيح. حاول مرة أخرى أو أعد الإرسال.",
     "verifySending": "جارٍ الإرسال...",
-    "verifySendError": "تعذر إرسال البريد. حاول مرة أخرى."
+    "verifySendError": "تعذر إرسال البريد. حاول مرة أخرى.",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "loginLink": "تسجيل الدخول"
   },
   "countries": {
     "us": "الولايات المتحدة",
@@ -97,5 +99,53 @@
     "submit": "إرسال رابط إعادة التعيين",
     "sentNotice": "إذا كان البريد مسجلاً فستتلقى رابط إعادة التعيين.",
     "backToLogin": "العودة لتسجيل الدخول"
+  },
+  "storeAuth": {
+    "title": "دخول المتجر",
+    "subtitle": "سجّل الدخول أو أنشئ حسابًا لإدارة متجرك.",
+    "signInTab": "تسجيل الدخول",
+    "signUpTab": "إنشاء حساب",
+    "signInSuccess": "تم تسجيل الدخول بنجاح.",
+    "signUpSuccess": "تم تأكيد الحساب بنجاح.",
+    "completeProfile": "إكمال ملف المتجر",
+    "backToSearch": "العودة للبحث"
+  },
+  "storeProfile": {
+    "title": "ملف المتجر",
+    "loading": "جارٍ تحميل الملف...",
+    "signInFirst": "يرجى تسجيل الدخول أولاً لتحديث ملف المتجر.",
+    "missingEmail": "البريد الإلكتروني مفقود.",
+    "missingFields": "يرجى تعبئة اسم المتجر والدولة والمدينة.",
+    "save": "حفظ الملف",
+    "saving": "جارٍ الحفظ...",
+    "saveSuccess": "تم حفظ الملف.",
+    "saveError": "تعذر حفظ الملف.",
+    "loadError": "تعذر تحميل الملف."
+  },
+  "home": {
+    "businessOwner": "هل أنت صاحب متجر؟",
+    "addYourStore": "أضف متجرك",
+    "categoriesTitle": "استكشف الفئات",
+    "categoriesSubtitle": "ابحث في المواد الشائعة."
+  },
+  "searchSection": {
+    "uploadYourImage": "ارفع صورتك",
+    "dragOrClick": "اسحب وأفلت أو انقر للرفع",
+    "formats": "JPG، PNG أو WEBP حتى 10 ميجابايت",
+    "uploadPreview": "معاينة الصورة المرفوعة",
+    "removeImage": "إزالة الصورة",
+    "searchSimilar": "ابحث عن منتجات مشابهة",
+    "chooseAnother": "اختر صورة أخرى",
+    "searchFree": "بحث الصور مجاني للجميع"
+  },
+  "storeDashboard": {
+    "title": "لوحة تحكم المتجر",
+    "subtitle": "إدارة المتجر والمنتجات",
+    "logOut": "تسجيل الخروج",
+    "addProductImage": "إضافة صورة منتج",
+    "addProductDescription": "ارفع الصور لجعل منتجاتك قابلة للبحث.",
+    "dragOrClick": "اسحب صورة أو انقر للرفع",
+    "yourProducts": "منتجاتك",
+    "noProducts": "لا توجد منتجات بعد."
   }
 }

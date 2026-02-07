@@ -50,7 +50,9 @@
     "verifyResend": "ارسال مجدد کد",
     "verifyInvalid": "کد نادرست است. دوباره تلاش کنید یا ارسال مجدد کنید.",
     "verifySending": "در حال ارسال...",
-    "verifySendError": "ارسال ایمیل انجام نشد. دوباره تلاش کنید."
+    "verifySendError": "ارسال ایمیل انجام نشد. دوباره تلاش کنید.",
+    "hasAccount": "قبلاً حساب دارید؟",
+    "loginLink": "ورود"
   },
   "countries": {
     "us": "ایالات متحده",
@@ -97,5 +99,53 @@
     "submit": "ارسال لینک بازنشانی",
     "sentNotice": "اگر ایمیل موجود باشد، لینک بازنشانی دریافت می‌کنید.",
     "backToLogin": "بازگشت به ورود"
+  },
+  "storeAuth": {
+    "title": "ورود فروشگاه",
+    "subtitle": "برای مدیریت فروشگاه وارد شوید یا ثبت نام کنید.",
+    "signInTab": "ورود",
+    "signUpTab": "ثبت نام",
+    "signInSuccess": "با موفقیت وارد شدید.",
+    "signUpSuccess": "حساب با موفقیت تأیید شد.",
+    "completeProfile": "تکمیل پروفایل فروشگاه",
+    "backToSearch": "بازگشت به جستجو"
+  },
+  "storeProfile": {
+    "title": "پروفایل فروشگاه",
+    "loading": "در حال بارگذاری پروفایل...",
+    "signInFirst": "برای به‌روزرسانی پروفایل ابتدا وارد شوید.",
+    "missingEmail": "ایمیل موجود نیست.",
+    "missingFields": "نام فروشگاه، کشور و شهر را وارد کنید.",
+    "save": "ذخیره پروفایل",
+    "saving": "در حال ذخیره...",
+    "saveSuccess": "پروفایل ذخیره شد.",
+    "saveError": "ذخیره پروفایل انجام نشد.",
+    "loadError": "بارگذاری پروفایل انجام نشد."
+  },
+  "home": {
+    "businessOwner": "صاحب فروشگاه هستید؟",
+    "addYourStore": "فروشگاه خود را اضافه کنید",
+    "categoriesTitle": "دسته‌بندی‌ها را ببینید",
+    "categoriesSubtitle": "در میان مواد محبوب جستجو کنید."
+  },
+  "searchSection": {
+    "uploadYourImage": "تصویر خود را آپلود کنید",
+    "dragOrClick": "بکشید و رها کنید یا کلیک کنید",
+    "formats": "JPG، PNG یا WEBP تا ۱۰ مگابایت",
+    "uploadPreview": "پیش‌نمایش تصویر آپلود شده",
+    "removeImage": "حذف تصویر",
+    "searchSimilar": "جستجوی محصولات مشابه",
+    "chooseAnother": "انتخاب تصویر دیگر",
+    "searchFree": "جستجوی تصویر رایگان برای همه"
+  },
+  "storeDashboard": {
+    "title": "داشبورد فروشگاه",
+    "subtitle": "فروشگاه و محصولات خود را مدیریت کنید",
+    "logOut": "خروج",
+    "addProductImage": "افزودن تصویر محصول",
+    "addProductDescription": "برای قابل جستجو شدن محصولات، تصویر آپلود کنید.",
+    "dragOrClick": "یک تصویر بکشید یا کلیک کنید",
+    "yourProducts": "محصولات شما",
+    "noProducts": "هنوز محصولی وجود ندارد."
   }
 }

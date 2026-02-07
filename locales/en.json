@@ -20,6 +20,28 @@
     "noAccount": "No account yet?",
     "registerLink": "Register"
   },
+  "storeAuth": {
+    "title": "Store access",
+    "subtitle": "Sign in or sign up to manage your store.",
+    "signInTab": "Sign in",
+    "signUpTab": "Sign up",
+    "signInSuccess": "Signed in successfully.",
+    "signUpSuccess": "Account verified successfully.",
+    "completeProfile": "Finish your store profile",
+    "backToSearch": "Back to search"
+  },
+  "storeProfile": {
+    "title": "Store profile",
+    "loading": "Loading profile...",
+    "signInFirst": "Sign in first to update your store profile.",
+    "missingEmail": "Email is missing.",
+    "missingFields": "Please fill store name, country, and city.",
+    "save": "Save profile",
+    "saving": "Saving...",
+    "saveSuccess": "Profile saved.",
+    "saveError": "Could not save profile.",
+    "loadError": "Could not load profile."
+  },
   "forgot": {
     "title": "Reset password",
     "subtitle": "We will send a reset link to your email.",
@@ -57,7 +79,9 @@
     "verifySending": "Sending...",
     "verifySendError": "Could not send email. Try again.",
     "verifyInvalid": "Code is not correct. Try again or resend.",
-    "verifySuccess": "Email verified. You can log in now."
+    "verifySuccess": "Email verified. You can log in now.",
+    "hasAccount": "Already have an account?",
+    "loginLink": "Log in"
   },
   "countries": {
     "us": "United States",
@@ -97,5 +121,31 @@
     "granite": "Granite",
     "fabric": "Fabric",
     "carpetAndRugs": "Carpet and rugs"
+  },
+  "home": {
+    "businessOwner": "Business owner?",
+    "addYourStore": "Add your store",
+    "categoriesTitle": "Explore categories",
+    "categoriesSubtitle": "Search across popular materials."
+  },
+  "searchSection": {
+    "uploadYourImage": "Upload your image",
+    "dragOrClick": "Drag and drop or click to upload",
+    "formats": "JPG, PNG, or WEBP up to 10MB",
+    "uploadPreview": "Uploaded image preview",
+    "removeImage": "Remove image",
+    "searchSimilar": "Search similar products",
+    "chooseAnother": "Choose another image",
+    "searchFree": "Free image search for everyone"
+  },
+  "storeDashboard": {
+    "title": "Store dashboard",
+    "subtitle": "Manage your store and products",
+    "logOut": "Log out",
+    "addProductImage": "Add product image",
+    "addProductDescription": "Upload images to make your products searchable.",
+    "dragOrClick": "Drag an image or click to upload",
+    "yourProducts": "Your products",
+    "noProducts": "No products yet."
   }
 }

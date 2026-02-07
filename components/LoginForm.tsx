@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 
-export function LoginForm() {
+type LoginFormProps = {
+  onSuccess?: () => void;
+};
+
+export function LoginForm({ onSuccess }: LoginFormProps) {
   const { t } = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +28,10 @@ export function LoginForm() {
     setError("");
     // Placeholder: will wire to auth in a later step
     console.log("Login", { email, password });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("store-auth-email", normalizedEmail);
+    }
+    onSuccess?.();
   };
 
   return (
