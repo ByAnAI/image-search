@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 
@@ -63,6 +64,14 @@ export function LoginForm() {
       >
         {t("login.submit")}
       </button>
+      <div className="text-center">
+        <Link
+          href="/forgot-password"
+          className="text-sm text-primary-600 hover:text-primary-700 font-medium"
+        >
+          {t("login.forgotPassword")}
+        </Link>
+      </div>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </form>
   );

@@ -9,13 +9,23 @@
   "login": {
     "title": "Welcome back",
     "subtitle": "Sign in to manage your store.",
+    "signInTab": "Log in",
+    "signUpTab": "Sign up",
     "email": "Email",
     "emailPlaceholder": "Enter your email",
     "password": "Password",
     "submit": "Login",
+    "forgotPassword": "Forgot password?",
     "verifyRequired": "Please verify your email before logging in.",
     "noAccount": "No account yet?",
     "registerLink": "Register"
+  },
+  "forgot": {
+    "title": "Reset password",
+    "subtitle": "We will send a reset link to your email.",
+    "submit": "Send reset link",
+    "sentNotice": "If the email exists, you'll receive a reset link.",
+    "backToLogin": "Back to login"
   },
   "register": {
     "title": "Store registration",

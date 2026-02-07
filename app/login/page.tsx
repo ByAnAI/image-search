@@ -14,6 +14,18 @@ export default function LoginPage() {
           <p className="text-slate-600 mt-1">{t("login.subtitle")}</p>
         </div>
 
+        <div className="flex rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden mb-6">
+          <span className="flex-1 text-center py-2.5 text-sm font-semibold bg-primary-500 text-sciwiz-dark">
+            {t("login.signInTab")}
+          </span>
+          <Link
+            href="/register"
+            className="flex-1 text-center py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
+          >
+            {t("login.signUpTab")}
+          </Link>
+        </div>
+
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
           <LoginForm />
         </div>
