@@ -9,6 +9,9 @@ out
 build
 dist
 
+# Local data
+data
+
 # Env
 .env
 .env.local

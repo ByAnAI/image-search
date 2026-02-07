@@ -1,17 +1,37 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 
-export function LoginForm() {
+type LoginFormProps = {
+  onSuccess?: () => void;
+};
+
+export function LoginForm({ onSuccess }: LoginFormProps) {
   const { t } = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const normalizedEmail = email.trim().toLowerCase();
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("image-search-verified-emails");
+      const map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
+      if (!map[normalizedEmail]) {
+        setError(t("login.verifyRequired"));
+        return;
+      }
+    }
+    setError("");
     // Placeholder: will wire to auth in a later step
     console.log("Login", { email, password });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("store-auth-email", normalizedEmail);
+    }
+    onSuccess?.();
   };
 
   return (
@@ -48,10 +68,19 @@ export function LoginForm() {
       </div>
       <button
         type="submit"
-        className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors"
+        className="w-full py-3 rounded-lg font-semibold bg-green-500 text-white hover:bg-green-600 transition-colors"
       >
         {t("login.submit")}
       </button>
+      <div className="text-center">
+        <Link
+          href="/forgot-password"
+          className="text-sm text-primary-600 hover:text-primary-700 font-medium"
+        >
+          {t("login.forgotPassword")}
+        </Link>
+      </div>
+      {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </form>
   );
 }

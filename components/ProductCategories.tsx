@@ -8,33 +8,33 @@ export function ProductCategories() {
   const { t } = useLocale();
 
   return (
-    <section className="mt-16">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
-          {t("home.categoriesTitle")}
+    <section className="mt-4">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold text-slate-900">
+          {t("home.categoriesTitle")}{" "}
+          <span className="text-slate-600 font-normal">
+            {t("home.categoriesSubtitle")}
+          </span>
         </h2>
-        <p className="text-slate-600 max-w-xl mx-auto">
-          {t("home.categoriesSubtitle")}
-        </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
         {PRODUCT_CATEGORIES.map((category) => (
           <article
             key={category.id}
-            className="group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md hover:border-slate-300 transition-all"
+            className="group w-36 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md hover:border-slate-300 transition-all"
           >
-            <div className="aspect-[4/3] relative bg-slate-100 overflow-hidden">
+            <div className="h-32 w-32 mx-auto mt-4 relative bg-slate-100 overflow-hidden rounded-xl">
               <Image
                 src={category.sampleImageUrl}
                 alt={t(category.translationKey)}
                 fill
-                sizes="(max-width: 640px) 50vw, 33vw"
+                sizes="128px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="p-4 text-center">
-              <h3 className="font-semibold text-slate-800">
+            <div className="p-3 text-center">
+              <h3 className="font-semibold text-sm text-slate-800">
                 {t(category.translationKey)}
               </h3>
             </div>

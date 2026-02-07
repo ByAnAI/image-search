@@ -30,13 +30,13 @@ export function Nav() {
             {t("nav.login")}
           </Link>
           <Link
-            href="/store/dashboard"
+            href="/"
             className="text-sm text-sciwiz-light/90 hover:text-white transition-colors"
           >
             {t("nav.dashboard")}
           </Link>
           <Link
-            href="/register"
+            href="/store/auth"
             className="text-sm font-semibold text-sciwiz-dark bg-primary-500 hover:bg-primary-600 px-4 py-2 rounded-lg transition-colors"
           >
             {t("nav.forStores")}
