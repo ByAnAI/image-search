@@ -15,7 +15,10 @@
     "submit": "Anmelden",
     "noAccount": "Noch kein Konto?",
     "registerLink": "Registrieren",
-    "verifyRequired": "Bitte bestätigen Sie Ihre E-Mail, bevor Sie sich anmelden."
+    "verifyRequired": "Bitte bestätigen Sie Ihre E-Mail, bevor Sie sich anmelden.",
+    "signInTab": "Anmelden",
+    "signUpTab": "Registrieren",
+    "forgotPassword": "Passwort vergessen?"
   },
   "register": {
     "title": "Shop-Registrierung",
@@ -87,5 +90,12 @@
     "granite": "Granit",
     "fabric": "Stoff",
     "carpetAndRugs": "Teppiche"
+  },
+  "forgot": {
+    "title": "Passwort zurücksetzen",
+    "subtitle": "Wir senden einen Reset-Link an Ihre E-Mail.",
+    "submit": "Reset-Link senden",
+    "sentNotice": "Wenn die E-Mail existiert, erhalten Sie einen Reset-Link.",
+    "backToLogin": "Zurück zum Login"
   }
 }

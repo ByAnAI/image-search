@@ -15,7 +15,10 @@
     "submit": "登录",
     "noAccount": "还没有账号？",
     "registerLink": "注册",
-    "verifyRequired": "请先验证邮箱再登录。"
+    "verifyRequired": "请先验证邮箱再登录。",
+    "signInTab": "登录",
+    "signUpTab": "注册",
+    "forgotPassword": "忘记密码？"
   },
   "register": {
     "title": "商家注册",
@@ -87,5 +90,12 @@
     "granite": "花岗岩",
     "fabric": "面料",
     "carpetAndRugs": "地毯和地垫"
+  },
+  "forgot": {
+    "title": "重置密码",
+    "subtitle": "我们会将重置链接发送到您的邮箱。",
+    "submit": "发送重置链接",
+    "sentNotice": "如果邮箱存在，您将收到重置链接。",
+    "backToLogin": "返回登录"
   }
 }

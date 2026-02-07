@@ -15,7 +15,10 @@
     "submit": "Giriş",
     "noAccount": "Hesabınız yok mu?",
     "registerLink": "Kayıt Ol",
-    "verifyRequired": "Giriş yapmadan önce e-posta adresinizi doğrulayın."
+    "verifyRequired": "Giriş yapmadan önce e-posta adresinizi doğrulayın.",
+    "signInTab": "Giriş",
+    "signUpTab": "Kayıt Ol",
+    "forgotPassword": "Şifremi unuttum?"
   },
   "register": {
     "title": "Mağaza kaydı",
@@ -87,5 +90,12 @@
     "granite": "Granit",
     "fabric": "Kumaş",
     "carpetAndRugs": "Halı ve Kilimler"
+  },
+  "forgot": {
+    "title": "Şifre sıfırlama",
+    "subtitle": "E-postanıza sıfırlama bağlantısı göndereceğiz.",
+    "submit": "Sıfırlama bağlantısı gönder",
+    "sentNotice": "E-posta kayıtlıysa bir bağlantı alırsınız.",
+    "backToLogin": "Girişe dön"
   }
 }

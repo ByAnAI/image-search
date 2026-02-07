@@ -15,7 +15,10 @@
     "submit": "Connexion",
     "noAccount": "Pas encore de compte ?",
     "registerLink": "S'inscrire",
-    "verifyRequired": "Veuillez vérifier votre email avant de vous connecter."
+    "verifyRequired": "Veuillez vérifier votre email avant de vous connecter.",
+    "signInTab": "Connexion",
+    "signUpTab": "S'inscrire",
+    "forgotPassword": "Mot de passe oublié ?"
   },
   "register": {
     "title": "Inscription du magasin",
@@ -87,5 +90,12 @@
     "granite": "Granit",
     "fabric": "Tissu",
     "carpetAndRugs": "Tapis et moquette"
+  },
+  "forgot": {
+    "title": "Réinitialiser le mot de passe",
+    "subtitle": "Nous enverrons un lien de réinitialisation à votre email.",
+    "submit": "Envoyer le lien",
+    "sentNotice": "Si l'email existe, vous recevrez un lien de réinitialisation.",
+    "backToLogin": "Retour à la connexion"
   }
 }
