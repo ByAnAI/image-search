@@ -8,12 +8,32 @@ export default function ForgotPasswordPage() {
   const { t } = useLocale();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
-    // Placeholder: will wire to auth in a later step
-    console.log("Forgot password", { email });
+    setSending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setError(data.error ?? t("register.verifySendError"));
+        return;
+      }
+      setSubmitted(true);
+      // Placeholder: will wire to auth in a later step
+      console.log("Forgot password", { email });
+    } catch {
+      setError(t("register.verifySendError"));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -37,18 +57,22 @@ export default function ForgotPasswordPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
+                disabled={sending}
                 className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
                 placeholder={t("login.emailPlaceholder")}
               />
             </div>
             <button
               type="submit"
+              disabled={sending}
               className="w-full py-3 rounded-xl font-semibold bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 transition-colors"
             >
-              {t("forgot.submit")}
+              {sending ? t("register.verifySending") : t("forgot.submit")}
             </button>
           </form>
         </div>
+
+        {error ? <p className="mt-4 text-center text-sm text-rose-300">{error}</p> : null}
 
         {submitted ? (
           <p className="mt-4 text-center text-sm text-slate-300">{t("forgot.sentNotice")}</p>

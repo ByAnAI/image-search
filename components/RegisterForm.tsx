@@ -28,8 +28,11 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
         body: JSON.stringify({ email: targetEmail, code }),
       });
       if (!response.ok) {
-        setVerificationError(t("register.verifySendError"));
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setVerificationError(data.error ?? t("register.verifySendError"));
+        return;
       }
+      setVerificationError("");
     } catch {
       setVerificationError(t("register.verifySendError"));
     } finally {
@@ -52,11 +55,11 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
       const code = String(Math.floor(100000 + Math.random() * 900000));
       codeMap[normalizedEmail] = code;
       localStorage.setItem("image-search-verification-codes", JSON.stringify(codeMap));
+      setVerificationState("sent");
+      setVerificationCode("");
+      setVerificationError("");
       sendVerificationEmail(normalizedEmail, code);
     }
-    setVerificationState("sent");
-    setVerificationCode("");
-    setVerificationError("");
     console.log("Register", {
       email,
       password,
@@ -96,11 +99,11 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
       const code = String(Math.floor(100000 + Math.random() * 900000));
       codeMap[normalizedEmail] = code;
       localStorage.setItem("image-search-verification-codes", JSON.stringify(codeMap));
+      setVerificationState("sent");
+      setVerificationCode("");
+      setVerificationError("");
       sendVerificationEmail(normalizedEmail, code);
     }
-    setVerificationState("sent");
-    setVerificationCode("");
-    setVerificationError("");
   };
 
   return (

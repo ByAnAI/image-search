@@ -187,7 +187,7 @@ export function StoreDashboard() {
   return (
     <div className="space-y-8">
       <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
-        <h2 className="text-lg font-semibold text-slate-800 mb-4">
+        <h2 className="text-lg font-semibold text-slate-100 mb-4">
           {t("storeProfile.title")}
         </h2>
         {loadingProfile ? (
