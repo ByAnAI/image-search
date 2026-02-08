@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+import { getSupabaseAdmin } from "@/lib/server/supabaseAdmin";
 
 const TOKEN_TTL_MS = 1000 * 60 * 60;
 
@@ -13,7 +13,8 @@ function hashPassword(password: string) {
 
 export async function setAccountPassword(email: string, password: string) {
   const normalizedEmail = normalizeEmail(email);
-  const { error } = await supabaseAdmin.from("store_accounts").upsert(
+  const supabase = getSupabaseAdmin();
+  const { error } = await supabase.from("store_accounts").upsert(
     {
       email: normalizedEmail,
       password_hash: hashPassword(password),
@@ -28,7 +29,8 @@ export async function setAccountPassword(email: string, password: string) {
 
 export async function getAccountIdByEmail(email: string) {
   const normalizedEmail = normalizeEmail(email);
-  const { data, error } = await supabaseAdmin
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
     .from("store_accounts")
     .select("id")
     .eq("email", normalizedEmail)
@@ -37,7 +39,7 @@ export async function getAccountIdByEmail(email: string) {
   if (!data) return null;
   if (data.id) return data.id;
   const newId = crypto.randomUUID();
-  const { error: updateError } = await supabaseAdmin
+  const { error: updateError } = await supabase
     .from("store_accounts")
     .update({ id: newId })
     .eq("email", normalizedEmail);
@@ -47,7 +49,8 @@ export async function getAccountIdByEmail(email: string) {
 
 export async function verifyAccountPassword(email: string, password: string) {
   const normalizedEmail = normalizeEmail(email);
-  const { data, error } = await supabaseAdmin
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
     .from("store_accounts")
     .select("password_hash")
     .eq("email", normalizedEmail)
@@ -59,7 +62,8 @@ export async function verifyAccountPassword(email: string, password: string) {
 export async function createResetToken(email: string) {
   const normalizedEmail = normalizeEmail(email);
   const token = crypto.randomBytes(24).toString("hex");
-  const { error } = await supabaseAdmin.from("password_resets").insert({
+  const supabase = getSupabaseAdmin();
+  const { error } = await supabase.from("password_resets").insert({
     token,
     email: normalizedEmail,
     expires_at: new Date(Date.now() + TOKEN_TTL_MS).toISOString(),
@@ -71,14 +75,15 @@ export async function createResetToken(email: string) {
 }
 
 export async function consumeResetToken(token: string) {
-  const { data, error } = await supabaseAdmin
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
     .from("password_resets")
     .select("email, expires_at")
     .eq("token", token)
     .maybeSingle();
   if (error || !data) return null;
   const expired = new Date(data.expires_at).getTime() < Date.now();
-  await supabaseAdmin.from("password_resets").delete().eq("token", token);
+  await supabase.from("password_resets").delete().eq("token", token);
   if (expired) return null;
   return data.email as string;
 }
