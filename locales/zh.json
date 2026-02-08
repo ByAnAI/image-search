@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "电话：",
+    "websiteLabel": "访问网站"
   },
   "storeDashboard": {
     "title": "商家面板",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "请先完善资料再上传产品。",
     "yourProducts": "您的产品",
     "productImageAlt": "Product image",
+    "deleteImage": "删除",
+    "deletingImage": "正在删除...",
+    "deleteError": "无法删除产品图片。",
     "noProducts": "暂无产品。"
   }
 }
