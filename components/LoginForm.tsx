@@ -18,9 +18,16 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     e.preventDefault();
     const normalizedEmail = email.trim().toLowerCase();
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("image-search-verified-emails");
-      const map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
-      if (!map[normalizedEmail]) {
+      let map: Record<string, boolean> = {};
+      try {
+        const stored = localStorage.getItem("image-search-verified-emails");
+        map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
+      } catch {
+        map = {};
+      }
+      const storedEmail = localStorage.getItem("store-auth-email") ?? "";
+      const isVerified = Boolean(map[normalizedEmail] || storedEmail === normalizedEmail);
+      if (!isVerified) {
         setError(t("login.verifyRequired"));
         return;
       }
