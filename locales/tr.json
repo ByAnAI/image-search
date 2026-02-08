@@ -16,6 +16,7 @@
     "noAccount": "Hesabınız yok mu?",
     "registerLink": "Kayıt Ol",
     "verifyRequired": "Giriş yapmadan önce e-posta adresinizi doğrulayın.",
+    "invalidCredentials": "Invalid email or password.",
     "signInTab": "Giriş",
     "signUpTab": "Kayıt Ol",
     "forgotPassword": "Şifremi unuttum?"
@@ -100,6 +101,19 @@
     "sentNotice": "E-posta kayıtlıysa bir bağlantı alırsınız.",
     "backToLogin": "Girişe dön"
   },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
+  },
   "storeAuth": {
     "title": "Mağaza erişimi",
     "subtitle": "Mağazanızı yönetmek için giriş yapın veya kayıt olun.",
@@ -136,7 +150,20 @@
     "removeImage": "Görseli kaldır",
     "searchSimilar": "Benzer ürünleri ara",
     "chooseAnother": "Başka bir görsel seç",
-    "searchFree": "Herkes için ücretsiz görsel arama"
+    "searchFree": "Herkes için ücretsiz görsel arama",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "Mağaza paneli",
@@ -144,8 +171,14 @@
     "logOut": "Çıkış yap",
     "addProductImage": "Ürün görseli ekle",
     "addProductDescription": "Ürünlerin aranabilir olması için görsel yükleyin.",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "Bir görsel sürükleyin veya tıklayın",
     "yourProducts": "Ürünleriniz",
+    "productImageAlt": "Product image",
     "noProducts": "Henüz ürün yok."
   }
 }

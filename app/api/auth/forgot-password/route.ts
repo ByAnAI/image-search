@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { createResetToken } from "@/lib/server/authStore";
 
 type Payload = {
   email?: string;
@@ -24,12 +25,17 @@ export async function POST(request: Request) {
     auth: { user, pass },
   });
 
+  const token = await createResetToken(email);
+  const origin =
+    request.headers.get("origin") ??
+    `${request.headers.get("x-forwarded-proto") ?? "https"}://${request.headers.get("host")}`;
+  const resetLink = `${origin}/reset-password?token=${token}`;
+
   await transporter.sendMail({
     from: `"Image Search" <${user}>`,
     to: email,
     subject: "Password reset request",
-    text:
-      "We received a request to reset your password. If you did not request this, ignore this email.",
+    text: `Reset your password using this link:\n\n${resetLink}\n\nIf you did not request this, ignore this email.`,
   });
 
   return Response.json({ ok: true });

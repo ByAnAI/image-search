@@ -17,6 +17,7 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
   );
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationError, setVerificationError] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const [verificationSending, setVerificationSending] = useState(false);
 
   const sendVerificationEmail = async (targetEmail: string, code: string) => {
@@ -40,10 +41,26 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Placeholder: will wire to auth in a later step
     const normalizedEmail = email.trim().toLowerCase();
+    setSubmitError("");
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalizedEmail, password }),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setSubmitError(data.error ?? t("register.verifySendError"));
+        return;
+      }
+    } catch {
+      setSubmitError(t("register.verifySendError"));
+      return;
+    }
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("image-search-verified-emails");
       const map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
@@ -153,6 +170,8 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
       >
         {t("register.submit")}
       </button>
+
+      {submitError ? <p className="text-sm text-rose-300">{submitError}</p> : null}
 
       {verificationState === "sent" ? (
         <div className="rounded-xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">

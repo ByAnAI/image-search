@@ -16,6 +16,7 @@
     "noAccount": "حساب ندارید؟",
     "registerLink": "ثبت نام",
     "verifyRequired": "لطفاً قبل از ورود ایمیل خود را تایید کنید.",
+    "invalidCredentials": "Invalid email or password.",
     "signInTab": "ورود",
     "signUpTab": "ثبت نام",
     "forgotPassword": "رمز عبور را فراموش کرده‌اید؟"
@@ -100,6 +101,19 @@
     "sentNotice": "اگر ایمیل موجود باشد، لینک بازنشانی دریافت می‌کنید.",
     "backToLogin": "بازگشت به ورود"
   },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
+  },
   "storeAuth": {
     "title": "ورود فروشگاه",
     "subtitle": "برای مدیریت فروشگاه وارد شوید یا ثبت نام کنید.",
@@ -136,7 +150,20 @@
     "removeImage": "حذف تصویر",
     "searchSimilar": "جستجوی محصولات مشابه",
     "chooseAnother": "انتخاب تصویر دیگر",
-    "searchFree": "جستجوی تصویر رایگان برای همه"
+    "searchFree": "جستجوی تصویر رایگان برای همه",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "داشبورد فروشگاه",
@@ -144,8 +171,14 @@
     "logOut": "خروج",
     "addProductImage": "افزودن تصویر محصول",
     "addProductDescription": "برای قابل جستجو شدن محصولات، تصویر آپلود کنید.",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "یک تصویر بکشید یا کلیک کنید",
     "yourProducts": "محصولات شما",
+    "productImageAlt": "Product image",
     "noProducts": "هنوز محصولی وجود ندارد."
   }
 }

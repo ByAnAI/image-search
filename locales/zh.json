@@ -16,6 +16,7 @@
     "noAccount": "还没有账号？",
     "registerLink": "注册",
     "verifyRequired": "请先验证邮箱再登录。",
+    "invalidCredentials": "Invalid email or password.",
     "signInTab": "登录",
     "signUpTab": "注册",
     "forgotPassword": "忘记密码？"
@@ -100,6 +101,19 @@
     "sentNotice": "如果邮箱存在，您将收到重置链接。",
     "backToLogin": "返回登录"
   },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
+  },
   "storeAuth": {
     "title": "商家入口",
     "subtitle": "登录或注册以管理您的店铺。",
@@ -136,7 +150,20 @@
     "removeImage": "移除图片",
     "searchSimilar": "搜索相似产品",
     "chooseAnother": "选择另一张图片",
-    "searchFree": "所有人都可免费搜索图片"
+    "searchFree": "所有人都可免费搜索图片",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "商家面板",
@@ -144,8 +171,14 @@
     "logOut": "退出登录",
     "addProductImage": "添加产品图片",
     "addProductDescription": "上传图片以便搜索您的产品。",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "拖拽图片或点击上传",
     "yourProducts": "您的产品",
+    "productImageAlt": "Product image",
     "noProducts": "暂无产品。"
   }
 }

@@ -14,7 +14,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const normalizedEmail = email.trim().toLowerCase();
     if (typeof window !== "undefined") {
@@ -26,7 +26,21 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       }
     }
     setError("");
-    // Placeholder: will wire to auth in a later step
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalizedEmail, password }),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setError(data.error ?? t("login.invalidCredentials"));
+        return;
+      }
+    } catch {
+      setError(t("login.invalidCredentials"));
+      return;
+    }
     console.log("Login", { email, password });
     if (typeof window !== "undefined") {
       localStorage.setItem("store-auth-email", normalizedEmail);

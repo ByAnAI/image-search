@@ -16,6 +16,7 @@
     "noAccount": "ليس لديك حساب؟",
     "registerLink": "سجّل الآن",
     "verifyRequired": "يرجى تأكيد البريد الإلكتروني قبل تسجيل الدخول.",
+    "invalidCredentials": "Invalid email or password.",
     "signInTab": "تسجيل الدخول",
     "signUpTab": "إنشاء حساب",
     "forgotPassword": "نسيت كلمة المرور؟"
@@ -100,6 +101,19 @@
     "sentNotice": "إذا كان البريد مسجلاً فستتلقى رابط إعادة التعيين.",
     "backToLogin": "العودة لتسجيل الدخول"
   },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
+  },
   "storeAuth": {
     "title": "دخول المتجر",
     "subtitle": "سجّل الدخول أو أنشئ حسابًا لإدارة متجرك.",
@@ -136,7 +150,20 @@
     "removeImage": "إزالة الصورة",
     "searchSimilar": "ابحث عن منتجات مشابهة",
     "chooseAnother": "اختر صورة أخرى",
-    "searchFree": "بحث الصور مجاني للجميع"
+    "searchFree": "بحث الصور مجاني للجميع",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "لوحة تحكم المتجر",
@@ -144,8 +171,14 @@
     "logOut": "تسجيل الخروج",
     "addProductImage": "إضافة صورة منتج",
     "addProductDescription": "ارفع الصور لجعل منتجاتك قابلة للبحث.",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "اسحب صورة أو انقر للرفع",
     "yourProducts": "منتجاتك",
+    "productImageAlt": "Product image",
     "noProducts": "لا توجد منتجات بعد."
   }
 }

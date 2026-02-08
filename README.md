@@ -25,4 +25,22 @@ Open [http://localhost:3000](http://localhost:3000).
 | `/register` | Business owner registration (form only) |
 | `/store/dashboard` | Store dashboard — upload products (UI only) |
 
-Auth and image search will be wired in later steps. See [APP-OUTLINE.md](./APP-OUTLINE.md) for the full plan.
+Auth, password reset, and image search now rely on Supabase.
+
+### Supabase setup
+
+1. Create a Supabase project.
+2. In the SQL editor, run `supabase/schema.sql`.
+3. Create a Storage bucket named `product-images` and mark it as **public**.
+4. Add environment variables:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `EMAIL_USER`
+   - `EMAIL_PASS`
+
+### Notes
+
+- Passwords are hashed with SHA-256 in this starter setup (upgrade to bcrypt before production).
+- Image similarity uses a lightweight client-side feature extractor (8x8 color grid).
+
+See [APP-OUTLINE.md](./APP-OUTLINE.md) for the full plan.

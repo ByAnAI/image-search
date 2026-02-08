@@ -16,6 +16,7 @@
     "noAccount": "Pas encore de compte ?",
     "registerLink": "S'inscrire",
     "verifyRequired": "Veuillez vérifier votre email avant de vous connecter.",
+    "invalidCredentials": "Invalid email or password.",
     "signInTab": "Connexion",
     "signUpTab": "S'inscrire",
     "forgotPassword": "Mot de passe oublié ?"
@@ -100,6 +101,19 @@
     "sentNotice": "Si l'email existe, vous recevrez un lien de réinitialisation.",
     "backToLogin": "Retour à la connexion"
   },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
+  },
   "storeAuth": {
     "title": "Accès magasin",
     "subtitle": "Connectez-vous ou inscrivez-vous pour gérer votre magasin.",
@@ -136,7 +150,20 @@
     "removeImage": "Supprimer l'image",
     "searchSimilar": "Rechercher des produits similaires",
     "chooseAnother": "Choisir une autre image",
-    "searchFree": "Recherche d'images gratuite pour tous"
+    "searchFree": "Recherche d'images gratuite pour tous",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "Tableau de bord du magasin",
@@ -144,8 +171,14 @@
     "logOut": "Se déconnecter",
     "addProductImage": "Ajouter une image produit",
     "addProductDescription": "Téléversez des images pour rendre vos produits recherchables.",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "Glissez une image ou cliquez pour téléverser",
     "yourProducts": "Vos produits",
+    "productImageAlt": "Product image",
     "noProducts": "Aucun produit pour l'instant."
   }
 }

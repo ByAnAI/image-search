@@ -17,6 +17,7 @@
     "submit": "Login",
     "forgotPassword": "Forgot password?",
     "verifyRequired": "Please verify your email before logging in.",
+    "invalidCredentials": "Invalid email or password.",
     "noAccount": "No account yet?",
     "registerLink": "Register"
   },
@@ -48,6 +49,19 @@
     "submit": "Send reset link",
     "sentNotice": "If the email exists, you'll receive a reset link.",
     "backToLogin": "Back to login"
+  },
+  "reset": {
+    "title": "Reset password",
+    "subtitle": "Create a new password for your account.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "submit": "Update password",
+    "success": "Your password has been updated.",
+    "backToLogin": "Back to login",
+    "failed": "Could not reset password. Try again.",
+    "missingToken": "Reset link is missing or invalid.",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 8 characters."
   },
   "register": {
     "title": "Store registration",
@@ -136,7 +150,20 @@
     "removeImage": "Remove image",
     "searchSimilar": "Search similar products",
     "chooseAnother": "Choose another image",
-    "searchFree": "Free image search for everyone"
+    "searchFree": "Free image search for everyone",
+    "categoryLabel": "Product category",
+    "categoryPlaceholder": "Select a category",
+    "countryLabel": "Country",
+    "cityLabel": "City",
+    "allCountries": "All countries",
+    "allCities": "All cities",
+    "missingFilters": "Select a category and upload an image first.",
+    "searchError": "Could not search for similar products.",
+    "searching": "Searching...",
+    "resultImageAlt": "Similar product",
+    "unknownStore": "Store",
+    "unknownCity": "Unknown city",
+    "similarityLabel": "Similarity"
   },
   "storeDashboard": {
     "title": "Store dashboard",
@@ -144,8 +171,14 @@
     "logOut": "Log out",
     "addProductImage": "Add product image",
     "addProductDescription": "Upload images to make your products searchable.",
+    "productCategory": "Product category",
+    "selectCategory": "Select a category",
+    "categoryRequired": "Select a product category before uploading.",
+    "uploadError": "Could not upload the product image.",
+    "uploading": "Uploading...",
     "dragOrClick": "Drag an image or click to upload",
     "yourProducts": "Your products",
+    "productImageAlt": "Product image",
     "noProducts": "No products yet."
   }
 }

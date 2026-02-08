@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import arLocale from "i18n-iso-countries/langs/ar.json";
@@ -13,6 +14,8 @@ import deLocale from "i18n-iso-countries/langs/de.json";
 import ruLocale from "i18n-iso-countries/langs/ru.json";
 import { City, Country } from "country-state-city";
 import { useLocale } from "@/contexts/LocaleContext";
+import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
+import { extractImageFeatures } from "@/lib/imageFeatures";
 
 countries.registerLocale(enLocale);
 countries.registerLocale(arLocale);
@@ -59,6 +62,12 @@ export function StoreDashboard() {
   const [profileMessage, setProfileMessage] = useState("");
   const [profileError, setProfileError] = useState("");
   const [dragActive, setDragActive] = useState(false);
+  const [productCategory, setProductCategory] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [productItems, setProductItems] = useState<
+    { id: string; category: string; image_url: string; created_at: string }[]
+  >([]);
 
   const resolvedLocale = ISO_LOCALE_MAP[locale] ?? "en";
   const countryOptions = useMemo(() => {
@@ -108,6 +117,23 @@ export function StoreDashboard() {
     };
     loadProfile();
   }, [t]);
+
+  useEffect(() => {
+    if (!email) return;
+    const loadProducts = async () => {
+      try {
+        const response = await fetch(`/api/store/products?email=${encodeURIComponent(email)}`);
+        if (!response.ok) return;
+        const data = (await response.json()) as {
+          items?: { id: string; category: string; image_url: string; created_at: string }[];
+        };
+        setProductItems(data.items ?? []);
+      } catch {
+        // ignore
+      }
+    };
+    loadProducts();
+  }, [email]);
 
   useEffect(() => {
     if (!phoneFromProfile || phoneNumber) return;
@@ -179,8 +205,48 @@ export function StoreDashboard() {
     setDragActive(false);
     const file = e.dataTransfer.files?.[0];
     if (file?.type.startsWith("image/")) {
-      // Placeholder: will upload in a later step
-      console.log("Upload product image", file.name);
+      handleProductUpload(file);
+    }
+  };
+
+  const handleProductUpload = async (file: File) => {
+    if (!email) {
+      setUploadError(t("storeProfile.signInFirst"));
+      return;
+    }
+    if (!productCategory) {
+      setUploadError(t("storeDashboard.categoryRequired"));
+      return;
+    }
+    setUploadError("");
+    setUploading(true);
+    try {
+      const featureVector = await extractImageFeatures(file);
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("storeEmail", email);
+      formData.append("category", productCategory);
+      formData.append("featureVector", JSON.stringify(featureVector));
+      const response = await fetch("/api/store/products", {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setUploadError(data.error ?? t("storeDashboard.uploadError"));
+        return;
+      }
+      const { imageUrl } = (await response.json()) as { imageUrl?: string };
+      if (imageUrl) {
+        setProductItems((prev) => [
+          { id: `${Date.now()}`, category: productCategory, image_url: imageUrl, created_at: "" },
+          ...prev,
+        ]);
+      }
+    } catch {
+      setUploadError(t("storeDashboard.uploadError"));
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -320,6 +386,24 @@ export function StoreDashboard() {
         <p className="text-slate-400 text-sm mb-4">
           {t("storeDashboard.addProductDescription")}
         </p>
+        <div className="mb-4">
+          <label htmlFor="product-category" className="block text-sm font-medium text-slate-200 mb-1">
+            {t("storeDashboard.productCategory")}
+          </label>
+          <select
+            id="product-category"
+            value={productCategory}
+            onChange={(e) => setProductCategory(e.target.value)}
+            className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
+          >
+            <option value="">{t("storeDashboard.selectCategory")}</option>
+            {PRODUCT_CATEGORIES.map((item) => (
+              <option key={item.id} value={item.id}>
+                {t(item.translationKey)}
+              </option>
+            ))}
+          </select>
+        </div>
         <label
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -336,7 +420,7 @@ export function StoreDashboard() {
             className="hidden"
             onChange={(e) => {
               const file = e.target.files?.[0];
-              if (file) console.log("Upload product image", file.name);
+              if (file) handleProductUpload(file);
             }}
           />
           <svg
@@ -353,18 +437,38 @@ export function StoreDashboard() {
             />
           </svg>
           <span className="text-slate-200 font-medium">
-            {t("storeDashboard.dragOrClick")}
+            {uploading ? t("storeDashboard.uploading") : t("storeDashboard.dragOrClick")}
           </span>
         </label>
+        {uploadError ? <p className="text-sm text-rose-300 mt-3">{uploadError}</p> : null}
       </section>
 
       <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
         <h2 className="text-lg font-semibold text-slate-100 mb-4">
           {t("storeDashboard.yourProducts")}
         </h2>
-        <p className="text-slate-400 text-sm">
-          {t("storeDashboard.noProducts")}
-        </p>
+        {productItems.length ? (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {productItems.map((item) => (
+              <article
+                key={`${item.id}-${item.image_url}`}
+                className="rounded-2xl border border-white/10 bg-slate-900/60 p-3"
+              >
+                <div className="relative h-40 w-full rounded-xl overflow-hidden border border-white/10">
+                  <Image src={item.image_url} alt={t("storeDashboard.productImageAlt")} fill className="object-cover" />
+                </div>
+                <p className="mt-2 text-sm text-slate-200">
+                  {t(
+                    PRODUCT_CATEGORIES.find((entry) => entry.id === item.category)
+                      ?.translationKey ?? item.category
+                  )}
+                </p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className="text-slate-400 text-sm">{t("storeDashboard.noProducts")}</p>
+        )}
       </section>
     </div>
   );
