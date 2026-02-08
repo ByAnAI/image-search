@@ -40,6 +40,7 @@ const ISO_LOCALE_MAP: Record<string, string> = {
 };
 
 type StoreProfile = {
+  storeId?: string;
   email: string;
   storeName: string;
   country: string;
@@ -51,6 +52,7 @@ type StoreProfile = {
 export function StoreDashboard() {
   const { t, locale } = useLocale();
   const [email, setEmail] = useState("");
+  const [storeId, setStoreId] = useState("");
   const [storeName, setStoreName] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -59,6 +61,7 @@ export function StoreDashboard() {
   const [phoneFromProfile, setPhoneFromProfile] = useState("");
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [savingProfile, setSavingProfile] = useState(false);
+  const [profileSaved, setProfileSaved] = useState(false);
   const [profileMessage, setProfileMessage] = useState("");
   const [profileError, setProfileError] = useState("");
   const [dragActive, setDragActive] = useState(false);
@@ -102,8 +105,12 @@ export function StoreDashboard() {
           `/api/store/profile?email=${encodeURIComponent(storedEmail)}`
         );
         if (!response.ok) return;
-        const data = (await response.json()) as { profile?: StoreProfile };
+        const data = (await response.json()) as { profile?: StoreProfile | null; storeId?: string | null };
+        if (data.storeId) {
+          setStoreId(data.storeId);
+        }
         if (!data.profile) return;
+        setProfileSaved(true);
         setStoreName(data.profile.storeName ?? "");
         setCountry(data.profile.country ?? "");
         setCity(data.profile.city ?? "");
@@ -119,10 +126,13 @@ export function StoreDashboard() {
   }, [t]);
 
   useEffect(() => {
-    if (!email) return;
+    if (!storeId && !email) return;
     const loadProducts = async () => {
       try {
-        const response = await fetch(`/api/store/products?email=${encodeURIComponent(email)}`);
+        const query = storeId
+          ? `/api/store/products?storeId=${encodeURIComponent(storeId)}`
+          : `/api/store/products?email=${encodeURIComponent(email)}`;
+        const response = await fetch(query);
         if (!response.ok) return;
         const data = (await response.json()) as {
           items?: { id: string; category: string; image_url: string; created_at: string }[];
@@ -133,7 +143,7 @@ export function StoreDashboard() {
       }
     };
     loadProducts();
-  }, [email]);
+  }, [email, storeId]);
 
   useEffect(() => {
     if (!phoneFromProfile || phoneNumber) return;
@@ -185,6 +195,11 @@ export function StoreDashboard() {
         setProfileError(t("storeProfile.saveError"));
         return;
       }
+      const data = (await response.json().catch(() => ({}))) as { storeId?: string | null };
+      if (data.storeId) {
+        setStoreId(data.storeId);
+      }
+      setProfileSaved(true);
       setProfileMessage(t("storeProfile.saveSuccess"));
     } catch {
       setProfileError(t("storeProfile.saveError"));
@@ -214,6 +229,10 @@ export function StoreDashboard() {
       setUploadError(t("storeProfile.signInFirst"));
       return;
     }
+    if (!storeId || !profileSaved) {
+      setUploadError(t("storeDashboard.completeProfileFirst"));
+      return;
+    }
     if (!productCategory) {
       setUploadError(t("storeDashboard.categoryRequired"));
       return;
@@ -225,6 +244,7 @@ export function StoreDashboard() {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("storeEmail", email);
+      formData.append("storeId", storeId);
       formData.append("category", productCategory);
       formData.append("featureVector", JSON.stringify(featureVector));
       const response = await fetch("/api/store/products", {
@@ -250,6 +270,8 @@ export function StoreDashboard() {
     }
   };
 
+  const canUpload = Boolean(storeId && profileSaved);
+
   return (
     <div className="space-y-8">
       <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
@@ -270,6 +292,18 @@ export function StoreDashboard() {
                 id="profile-email"
                 type="email"
                 value={email}
+                readOnly
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300"
+              />
+            </div>
+            <div>
+              <label htmlFor="profile-id" className="block text-sm font-medium text-slate-200 mb-1">
+                {t("storeProfile.userNumber")}
+              </label>
+              <input
+                id="profile-id"
+                type="text"
+                value={storeId || "-"}
                 readOnly
                 className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300"
               />
@@ -386,6 +420,11 @@ export function StoreDashboard() {
         <p className="text-slate-400 text-sm mb-4">
           {t("storeDashboard.addProductDescription")}
         </p>
+        {!profileSaved ? (
+          <p className="text-sm text-amber-200 mb-4">
+            {t("storeDashboard.completeProfileFirst")}
+          </p>
+        ) : null}
         <div className="mb-4">
           <label htmlFor="product-category" className="block text-sm font-medium text-slate-200 mb-1">
             {t("storeDashboard.productCategory")}
@@ -394,7 +433,8 @@ export function StoreDashboard() {
             id="product-category"
             value={productCategory}
             onChange={(e) => setProductCategory(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
+            disabled={!canUpload}
+            className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
           >
             <option value="">{t("storeDashboard.selectCategory")}</option>
             {PRODUCT_CATEGORIES.map((item) => (
@@ -412,12 +452,14 @@ export function StoreDashboard() {
           className={`
             flex flex-col items-center justify-center w-full h-40 rounded-xl border-2 border-dashed cursor-pointer transition-colors
             ${dragActive ? "border-emerald-500 bg-emerald-500/10" : "border-white/10 hover:border-white/30 hover:bg-white/5"}
+            ${!canUpload ? "pointer-events-none opacity-60" : ""}
           `}
         >
           <input
             type="file"
             accept="image/*"
             className="hidden"
+            disabled={!canUpload}
             onChange={(e) => {
               const file = e.target.files?.[0];
               if (file) handleProductUpload(file);

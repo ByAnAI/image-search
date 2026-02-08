@@ -8,7 +8,8 @@ type Payload = {
 };
 
 type StoreInfo = {
-  email: string;
+  store_id: string;
+  email: string | null;
   store_name: string | null;
   country: string | null;
   city: string | null;
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
 
   const { data: images, error } = await supabaseAdmin
     .from("product_images")
-    .select("id, store_email, category, image_url, feature_vector")
+    .select("id, store_id, category, image_url, feature_vector")
     .eq("category", category)
     .limit(500);
 
@@ -51,11 +52,14 @@ export async function POST(request: Request) {
     return Response.json({ error: "Search failed." }, { status: 500 });
   }
 
-  const storeEmails = Array.from(new Set((images ?? []).map((item) => item.store_email)));
+  const storeIds = Array.from(new Set((images ?? []).map((item) => item.store_id)));
+  if (!storeIds.length) {
+    return Response.json({ results: [] });
+  }
   const { data: stores, error: storeError } = await supabaseAdmin
     .from("stores")
-    .select("email, store_name, country, city, website, phone")
-    .in("email", storeEmails);
+    .select("store_id, email, store_name, country, city, website, phone")
+    .in("store_id", storeIds);
 
   if (storeError) {
     return Response.json({ error: "Search failed." }, { status: 500 });
@@ -63,12 +67,12 @@ export async function POST(request: Request) {
 
   const storeMap = new Map<string, StoreInfo>();
   (stores ?? []).forEach((store) => {
-    storeMap.set(store.email, store);
+    storeMap.set(store.store_id, store);
   });
 
   const results = (images ?? [])
     .map((item) => {
-      const store = storeMap.get(item.store_email);
+      const store = storeMap.get(item.store_id);
       return {
         id: item.id,
         category: item.category,

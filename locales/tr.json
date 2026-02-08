@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "Mağaza profili",
+    "userNumber": "Kullanıcı numarası",
     "loading": "Profil yükleniyor...",
     "signInFirst": "Profili güncellemek için önce giriş yapın.",
     "missingEmail": "E-posta eksik.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "Bir görsel sürükleyin veya tıklayın",
+    "completeProfileFirst": "Ürün yüklemeden önce profilinizi tamamlayın.",
     "yourProducts": "Ürünleriniz",
     "productImageAlt": "Product image",
     "noProducts": "Henüz ürün yok."

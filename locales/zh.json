@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "店铺资料",
+    "userNumber": "用户编号",
     "loading": "正在加载资料...",
     "signInFirst": "请先登录以更新店铺资料。",
     "missingEmail": "邮箱缺失。",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "拖拽图片或点击上传",
+    "completeProfileFirst": "请先完善资料再上传产品。",
     "yourProducts": "您的产品",
     "productImageAlt": "Product image",
     "noProducts": "暂无产品。"

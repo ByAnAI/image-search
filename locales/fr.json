@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "Profil du magasin",
+    "userNumber": "Numéro d'utilisateur",
     "loading": "Chargement du profil...",
     "signInFirst": "Connectez-vous pour mettre à jour le profil.",
     "missingEmail": "Email manquant.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "Glissez une image ou cliquez pour téléverser",
+    "completeProfileFirst": "Complétez votre profil avant d'ajouter des produits.",
     "yourProducts": "Vos produits",
     "productImageAlt": "Product image",
     "noProducts": "Aucun produit pour l'instant."

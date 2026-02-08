@@ -1,6 +1,8 @@
 import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+import { getAccountIdByEmail } from "@/lib/server/authStore";
 
 type StoreProfile = {
+  storeId?: string;
   email: string;
   storeName: string;
   country: string;
@@ -16,19 +18,25 @@ export async function GET(request: Request) {
   if (!email) {
     return Response.json({ error: "Missing email." }, { status: 400 });
   }
+  const storeId = await getAccountIdByEmail(email);
   const { data, error } = await supabaseAdmin
     .from("stores")
-    .select("email, store_name, country, city, website, phone, updated_at")
+    .select("store_id, email, store_name, country, city, website, phone, updated_at")
     .eq("email", email)
     .maybeSingle();
   if (error) {
     return Response.json({ error: "Could not load profile." }, { status: 500 });
   }
+  if (data?.store_id === null && storeId) {
+    await supabaseAdmin.from("stores").update({ store_id: storeId }).eq("email", email);
+  }
   if (!data) {
-    return Response.json({ profile: null });
+    return Response.json({ profile: null, storeId: storeId ?? null });
   }
   return Response.json({
+    storeId: data.store_id ?? storeId ?? null,
     profile: {
+      storeId: data.store_id ?? storeId ?? undefined,
       email: data.email,
       storeName: data.store_name ?? "",
       country: data.country ?? "",
@@ -46,8 +54,13 @@ export async function POST(request: Request) {
   if (!email) {
     return Response.json({ error: "Missing email." }, { status: 400 });
   }
+  const storeId = await getAccountIdByEmail(email);
+  if (!storeId) {
+    return Response.json({ error: "Account not found." }, { status: 404 });
+  }
   const { error } = await supabaseAdmin.from("stores").upsert(
     {
+      store_id: storeId,
       email,
       store_name: body.storeName?.trim() ?? "",
       country: body.country?.trim() ?? "",
@@ -61,5 +74,5 @@ export async function POST(request: Request) {
   if (error) {
     return Response.json({ error: "Could not save profile." }, { status: 500 });
   }
-  return Response.json({ ok: true });
+  return Response.json({ ok: true, storeId });
 }

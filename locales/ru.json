@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "Профиль магазина",
+    "userNumber": "Номер пользователя",
     "loading": "Загрузка профиля...",
     "signInFirst": "Сначала войдите, чтобы обновить профиль.",
     "missingEmail": "Email отсутствует.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "Перетащите изображение или нажмите для загрузки",
+    "completeProfileFirst": "Сначала заполните профиль, чтобы загружать товары.",
     "yourProducts": "Ваши товары",
     "productImageAlt": "Product image",
     "noProducts": "Товаров пока нет."

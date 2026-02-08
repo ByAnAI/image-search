@@ -26,6 +26,25 @@ export async function setAccountPassword(email: string, password: string) {
   }
 }
 
+export async function getAccountIdByEmail(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+  const { data, error } = await supabaseAdmin
+    .from("store_accounts")
+    .select("id")
+    .eq("email", normalizedEmail)
+    .maybeSingle();
+  if (error) return null;
+  if (!data) return null;
+  if (data.id) return data.id;
+  const newId = crypto.randomUUID();
+  const { error: updateError } = await supabaseAdmin
+    .from("store_accounts")
+    .update({ id: newId })
+    .eq("email", normalizedEmail);
+  if (updateError) return null;
+  return newId;
+}
+
 export async function verifyAccountPassword(email: string, password: string) {
   const normalizedEmail = normalizeEmail(email);
   const { data, error } = await supabaseAdmin

@@ -1,6 +1,6 @@
 export type ImageFeatures = number[];
 
-const GRID_SIZE = 8;
+const GRID_SIZE = 128;
 
 export async function extractImageFeatures(file: File): Promise<ImageFeatures> {
   const bitmap = await createImageBitmap(file);

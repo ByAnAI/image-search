@@ -33,6 +33,7 @@
   },
   "storeProfile": {
     "title": "Store profile",
+    "userNumber": "User number",
     "loading": "Loading profile...",
     "signInFirst": "Sign in first to update your store profile.",
     "missingEmail": "Email is missing.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "Drag an image or click to upload",
+    "completeProfileFirst": "Complete your profile before uploading products.",
     "yourProducts": "Your products",
     "productImageAlt": "Product image",
     "noProducts": "No products yet."

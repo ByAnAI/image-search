@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "پروفایل فروشگاه",
+    "userNumber": "شماره کاربر",
     "loading": "در حال بارگذاری پروفایل...",
     "signInFirst": "برای به‌روزرسانی پروفایل ابتدا وارد شوید.",
     "missingEmail": "ایمیل موجود نیست.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "یک تصویر بکشید یا کلیک کنید",
+    "completeProfileFirst": "قبل از بارگذاری محصولات، پروفایل را کامل کنید.",
     "yourProducts": "محصولات شما",
     "productImageAlt": "Product image",
     "noProducts": "هنوز محصولی وجود ندارد."

@@ -126,6 +126,7 @@
   },
   "storeProfile": {
     "title": "ملف المتجر",
+    "userNumber": "رقم المستخدم",
     "loading": "جارٍ تحميل الملف...",
     "signInFirst": "يرجى تسجيل الدخول أولاً لتحديث ملف المتجر.",
     "missingEmail": "البريد الإلكتروني مفقود.",
@@ -177,6 +178,7 @@
     "uploadError": "Could not upload the product image.",
     "uploading": "Uploading...",
     "dragOrClick": "اسحب صورة أو انقر للرفع",
+    "completeProfileFirst": "أكمل ملفك قبل رفع المنتجات.",
     "yourProducts": "منتجاتك",
     "productImageAlt": "Product image",
     "noProducts": "لا توجد منتجات بعد."
