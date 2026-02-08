@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "@/contexts/LocaleContext";
 
 type LoginFormProps = {
@@ -10,6 +11,7 @@ type LoginFormProps = {
 
 export function LoginForm({ onSuccess }: LoginFormProps) {
   const { t } = useLocale();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -53,6 +55,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
       localStorage.setItem("store-auth-email", normalizedEmail);
     }
     onSuccess?.();
+    router.push("/store/dashboard");
   };
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "@/contexts/LocaleContext";
 
 type RegisterFormProps = {
@@ -9,6 +10,7 @@ type RegisterFormProps = {
 
 export function RegisterForm({ onVerified }: RegisterFormProps) {
   const { t } = useLocale();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -105,6 +107,7 @@ export function RegisterForm({ onVerified }: RegisterFormProps) {
       localStorage.setItem("store-auth-email", normalizedEmail);
     }
     onVerified?.();
+    router.push("/store/dashboard");
   };
 
   const handleResend = () => {
