@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+import { createClient } from "@supabase/supabase-js";
 
 type Payload = {
   featureVector?: number[];
@@ -17,6 +17,13 @@ type StoreInfo = {
   phone: string | null;
 };
 
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
 function cosineSimilarity(a: number[], b: number[]) {
   const length = Math.min(a.length, b.length);
   if (length === 0) return 0;
@@ -33,6 +40,13 @@ function cosineSimilarity(a: number[], b: number[]) {
 }
 
 export async function POST(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const body = (await request.json().catch(() => ({}))) as Payload;
   const featureVector = body.featureVector ?? [];
   const category = body.category?.trim() ?? "";
@@ -43,7 +57,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Missing search data." }, { status: 400 });
   }
 
-  const { data: images, error } = await supabaseAdmin
+  const { data: images, error } = await supabase
     .from("product_images")
     .select("id, store_id, category, image_url, feature_vector")
     .eq("category", category)
@@ -57,7 +71,7 @@ export async function POST(request: Request) {
   if (!storeIds.length) {
     return Response.json({ results: [] });
   }
-  const { data: stores, error: storeError } = await supabaseAdmin
+  const { data: stores, error: storeError } = await supabase
     .from("stores")
     .select("store_id, email, store_name, country, city, website, phone")
     .in("store_id", storeIds);

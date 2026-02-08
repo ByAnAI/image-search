@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 type ProductImage = {
   storeId: string;
@@ -12,8 +12,15 @@ function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
 }
 
-async function getStoreIdByEmail(email: string) {
-  const { data, error } = await supabaseAdmin
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
+async function getStoreIdByEmail(supabase: SupabaseClient, email: string) {
+  const { data, error } = await supabase
     .from("store_accounts")
     .select("id")
     .eq("email", email)
@@ -22,8 +29,8 @@ async function getStoreIdByEmail(email: string) {
   return data?.id ?? null;
 }
 
-async function getEmailByStoreId(storeId: string) {
-  const { data, error } = await supabaseAdmin
+async function getEmailByStoreId(supabase: SupabaseClient, storeId: string) {
+  const { data, error } = await supabase
     .from("store_accounts")
     .select("email")
     .eq("id", storeId)
@@ -44,6 +51,13 @@ function getStoragePathFromUrl(url: string) {
 }
 
 export async function GET(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const { searchParams } = new URL(request.url);
   const storeIdParam = searchParams.get("storeId")?.trim();
   const emailParam = searchParams.get("email")?.trim().toLowerCase();
@@ -52,13 +66,13 @@ export async function GET(request: Request) {
     if (!emailParam) {
       return Response.json({ error: "Missing store ID or email." }, { status: 400 });
     }
-    const resolvedId = await getStoreIdByEmail(emailParam);
+    const resolvedId = await getStoreIdByEmail(supabase, emailParam);
     if (!resolvedId) {
       return Response.json({ error: "Store not found." }, { status: 404 });
     }
     storeId = resolvedId;
   }
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await supabase
     .from("product_images")
     .select("id, store_id, store_email, category, image_url, created_at")
     .eq("store_id", storeId)
@@ -70,6 +84,13 @@ export async function GET(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id")?.trim();
   const storeIdParam = searchParams.get("storeId")?.trim();
@@ -84,14 +105,14 @@ export async function DELETE(request: Request) {
     if (!emailParam) {
       return Response.json({ error: "Missing store ID or email." }, { status: 400 });
     }
-    const resolvedId = await getStoreIdByEmail(emailParam);
+    const resolvedId = await getStoreIdByEmail(supabase, emailParam);
     if (!resolvedId) {
       return Response.json({ error: "Store not found." }, { status: 404 });
     }
     storeId = resolvedId;
   }
 
-  const { data: image, error: loadError } = await supabaseAdmin
+  const { data: image, error: loadError } = await supabase
     .from("product_images")
     .select("id, image_url")
     .eq("id", id)
@@ -105,7 +126,7 @@ export async function DELETE(request: Request) {
     return Response.json({ error: "Image not found." }, { status: 404 });
   }
 
-  const { error } = await supabaseAdmin
+  const { error } = await supabase
     .from("product_images")
     .delete()
     .eq("id", id)
@@ -117,13 +138,20 @@ export async function DELETE(request: Request) {
 
   const storagePath = getStoragePathFromUrl(image.image_url);
   if (storagePath) {
-    await supabaseAdmin.storage.from("product-images").remove([storagePath]);
+    await supabase.storage.from("product-images").remove([storagePath]);
   }
 
   return Response.json({ ok: true });
 }
 
 export async function POST(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const formData = await request.formData();
   const file = formData.get("file");
   const category = String(formData.get("category") ?? "").trim();
@@ -145,10 +173,10 @@ export async function POST(request: Request) {
   let storeId = rawStoreId;
   let storeEmail = rawEmail ? normalizeEmail(rawEmail) : "";
   if (!storeId) {
-    storeId = (await getStoreIdByEmail(storeEmail)) ?? "";
+    storeId = (await getStoreIdByEmail(supabase, storeEmail)) ?? "";
   }
   if (!storeEmail) {
-    storeEmail = (await getEmailByStoreId(storeId)) ?? "";
+    storeEmail = (await getEmailByStoreId(supabase, storeId)) ?? "";
   }
   if (!storeId) {
     return Response.json({ error: "Store not found." }, { status: 404 });
@@ -157,7 +185,7 @@ export async function POST(request: Request) {
   const fileBuffer = Buffer.from(await file.arrayBuffer());
   const filePath = `${storeId}/${Date.now()}-${file.name}`;
 
-  const { error: uploadError } = await supabaseAdmin.storage
+  const { error: uploadError } = await supabase.storage
     .from("product-images")
     .upload(filePath, fileBuffer, {
       contentType: file.type,
@@ -174,7 +202,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { data: publicUrlData } = supabaseAdmin.storage
+  const { data: publicUrlData } = supabase.storage
     .from("product-images")
     .getPublicUrl(filePath);
 
@@ -186,7 +214,7 @@ export async function POST(request: Request) {
     featureVector,
   };
 
-  const { error } = await supabaseAdmin.from("product_images").insert({
+  const { error } = await supabase.from("product_images").insert({
     store_id: payload.storeId,
     store_email: payload.storeEmail ?? null,
     category: payload.category,

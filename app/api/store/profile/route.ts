@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "@/lib/server/supabaseAdmin";
+import { createClient } from "@supabase/supabase-js";
 import { getAccountIdByEmail } from "@/lib/server/authStore";
 
 type StoreProfile = {
@@ -12,14 +12,28 @@ type StoreProfile = {
   updatedAt?: string;
 };
 
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
 export async function GET(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const { searchParams } = new URL(request.url);
   const email = searchParams.get("email")?.trim().toLowerCase();
   if (!email) {
     return Response.json({ error: "Missing email." }, { status: 400 });
   }
   const storeId = await getAccountIdByEmail(email);
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await supabase
     .from("stores")
     .select("store_id, email, store_name, country, city, website, phone, updated_at")
     .eq("email", email)
@@ -28,7 +42,7 @@ export async function GET(request: Request) {
     return Response.json({ error: "Could not load profile." }, { status: 500 });
   }
   if (data?.store_id === null && storeId) {
-    await supabaseAdmin.from("stores").update({ store_id: storeId }).eq("email", email);
+    await supabase.from("stores").update({ store_id: storeId }).eq("email", email);
   }
   if (!data) {
     return Response.json({ profile: null, storeId: storeId ?? null });
@@ -49,6 +63,13 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
   const body = (await request.json().catch(() => ({}))) as Partial<StoreProfile>;
   const email = body.email?.trim().toLowerCase();
   if (!email) {
@@ -58,7 +79,7 @@ export async function POST(request: Request) {
   if (!storeId) {
     return Response.json({ error: "Account not found." }, { status: 404 });
   }
-  const { error } = await supabaseAdmin.from("stores").upsert(
+  const { error } = await supabase.from("stores").upsert(
     {
       store_id: storeId,
       email,
