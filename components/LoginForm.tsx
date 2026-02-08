@@ -1,23 +1,67 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale } from "@/contexts/LocaleContext";
 
-export function LoginForm() {
+type LoginFormProps = {
+  onSuccess?: () => void;
+};
+
+export function LoginForm({ onSuccess }: LoginFormProps) {
   const { t } = useLocale();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder: will wire to auth in a later step
+    const normalizedEmail = email.trim().toLowerCase();
+    if (typeof window !== "undefined") {
+      let map: Record<string, boolean> = {};
+      try {
+        const stored = localStorage.getItem("image-search-verified-emails");
+        map = stored ? (JSON.parse(stored) as Record<string, boolean>) : {};
+      } catch {
+        map = {};
+      }
+      const storedEmail = localStorage.getItem("store-auth-email") ?? "";
+      const isVerified = Boolean(map[normalizedEmail] || storedEmail === normalizedEmail);
+      if (!isVerified) {
+        setError(t("login.verifyRequired"));
+        return;
+      }
+    }
+    setError("");
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: normalizedEmail, password }),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setError(data.error ?? t("login.invalidCredentials"));
+        return;
+      }
+    } catch {
+      setError(t("login.invalidCredentials"));
+      return;
+    }
     console.log("Login", { email, password });
+    if (typeof window !== "undefined") {
+      localStorage.setItem("store-auth-email", normalizedEmail);
+    }
+    onSuccess?.();
+    router.push("/store/dashboard");
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="login-email" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="login-email" className="block text-sm font-medium text-slate-200 mb-1">
           {t("login.email")}
         </label>
         <input
@@ -27,12 +71,12 @@ export function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           autoComplete="email"
-          className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+          className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
           placeholder={t("login.emailPlaceholder")}
         />
       </div>
       <div>
-        <label htmlFor="login-password" className="block text-sm font-medium text-slate-700 mb-1">
+        <label htmlFor="login-password" className="block text-sm font-medium text-slate-200 mb-1">
           {t("login.password")}
         </label>
         <input
@@ -42,16 +86,25 @@ export function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
           autoComplete="current-password"
-          className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+          className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
           placeholder="••••••••"
         />
       </div>
       <button
         type="submit"
-        className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors"
+        className="w-full py-3 rounded-xl font-semibold bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 transition-colors"
       >
         {t("login.submit")}
       </button>
+      <div className="text-center">
+        <Link
+          href="/forgot-password"
+          className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+        >
+          {t("login.forgotPassword")}
+        </Link>
+      </div>
+      {error ? <p className="text-sm text-rose-300">{error}</p> : null}
     </form>
   );
 }

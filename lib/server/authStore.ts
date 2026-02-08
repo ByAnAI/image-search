@@ -1,0 +1,89 @@
+import crypto from "crypto";
+import { getSupabaseAdmin } from "@/lib/server/supabaseAdmin";
+
+const TOKEN_TTL_MS = 1000 * 60 * 60;
+
+function normalizeEmail(email: string) {
+  return email.trim().toLowerCase();
+}
+
+function hashPassword(password: string) {
+  return crypto.createHash("sha256").update(password).digest("hex");
+}
+
+export async function setAccountPassword(email: string, password: string) {
+  const normalizedEmail = normalizeEmail(email);
+  const supabase = getSupabaseAdmin();
+  const { error } = await supabase.from("store_accounts").upsert(
+    {
+      email: normalizedEmail,
+      password_hash: hashPassword(password),
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "email" }
+  );
+  if (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getAccountIdByEmail(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
+    .from("store_accounts")
+    .select("id")
+    .eq("email", normalizedEmail)
+    .maybeSingle();
+  if (error) return null;
+  if (!data) return null;
+  if (data.id) return data.id;
+  const newId = crypto.randomUUID();
+  const { error: updateError } = await supabase
+    .from("store_accounts")
+    .update({ id: newId })
+    .eq("email", normalizedEmail);
+  if (updateError) return null;
+  return newId;
+}
+
+export async function verifyAccountPassword(email: string, password: string) {
+  const normalizedEmail = normalizeEmail(email);
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
+    .from("store_accounts")
+    .select("password_hash")
+    .eq("email", normalizedEmail)
+    .maybeSingle();
+  if (error || !data) return false;
+  return data.password_hash === hashPassword(password);
+}
+
+export async function createResetToken(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+  const token = crypto.randomBytes(24).toString("hex");
+  const supabase = getSupabaseAdmin();
+  const { error } = await supabase.from("password_resets").insert({
+    token,
+    email: normalizedEmail,
+    expires_at: new Date(Date.now() + TOKEN_TTL_MS).toISOString(),
+  });
+  if (error) {
+    throw new Error(error.message);
+  }
+  return token;
+}
+
+export async function consumeResetToken(token: string) {
+  const supabase = getSupabaseAdmin();
+  const { data, error } = await supabase
+    .from("password_resets")
+    .select("email, expires_at")
+    .eq("token", token)
+    .maybeSingle();
+  if (error || !data) return null;
+  const expired = new Date(data.expires_at).getTime() < Date.now();
+  await supabase.from("password_resets").delete().eq("token", token);
+  if (expired) return null;
+  return data.email as string;
+}

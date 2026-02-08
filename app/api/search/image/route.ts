@@ -1,0 +1,111 @@
+import { createClient } from "@supabase/supabase-js";
+
+type Payload = {
+  featureVector?: number[];
+  category?: string;
+  country?: string;
+  city?: string;
+};
+
+type StoreInfo = {
+  store_id: string;
+  email: string | null;
+  store_name: string | null;
+  country: string | null;
+  city: string | null;
+  website: string | null;
+  phone: string | null;
+};
+
+function getSupabaseClient() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
+function cosineSimilarity(a: number[], b: number[]) {
+  const length = Math.min(a.length, b.length);
+  if (length === 0) return 0;
+  let dot = 0;
+  let normA = 0;
+  let normB = 0;
+  for (let i = 0; i < length; i += 1) {
+    dot += a[i] * b[i];
+    normA += a[i] * a[i];
+    normB += b[i] * b[i];
+  }
+  const denom = Math.sqrt(normA) * Math.sqrt(normB);
+  return denom === 0 ? 0 : dot / denom;
+}
+
+export async function POST(request: Request) {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return Response.json(
+      { error: "Missing Supabase environment variables." },
+      { status: 500 }
+    );
+  }
+  const body = (await request.json().catch(() => ({}))) as Payload;
+  const featureVector = body.featureVector ?? [];
+  const category = body.category?.trim() ?? "";
+  const country = body.country?.trim() ?? "";
+  const city = body.city?.trim() ?? "";
+
+  if (!featureVector.length || !category) {
+    return Response.json({ error: "Missing search data." }, { status: 400 });
+  }
+
+  const { data: images, error } = await supabase
+    .from("product_images")
+    .select("id, store_id, category, image_url, feature_vector")
+    .eq("category", category)
+    .limit(500);
+
+  if (error) {
+    return Response.json({ error: "Search failed." }, { status: 500 });
+  }
+
+  const storeIds = Array.from(new Set((images ?? []).map((item) => item.store_id)));
+  if (!storeIds.length) {
+    return Response.json({ results: [] });
+  }
+  const { data: stores, error: storeError } = await supabase
+    .from("stores")
+    .select("store_id, email, store_name, country, city, website, phone")
+    .in("store_id", storeIds);
+
+  if (storeError) {
+    return Response.json({ error: "Search failed." }, { status: 500 });
+  }
+
+  const storeMap = new Map<string, StoreInfo>();
+  (stores ?? []).forEach((store) => {
+    storeMap.set(store.store_id, store);
+  });
+
+  const results = (images ?? [])
+    .map((item) => {
+      const store = storeMap.get(item.store_id);
+      return {
+        id: item.id,
+        category: item.category,
+        imageUrl: item.image_url,
+        similarity: cosineSimilarity(featureVector, item.feature_vector ?? []),
+        store: store ?? null,
+      };
+    })
+    .filter((item) => {
+      if (country || city) {
+        if (!item.store) return false;
+        if (country && item.store.country !== country) return false;
+        if (city && item.store.city !== city) return false;
+      }
+      return true;
+    })
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, 24);
+
+  return Response.json({ results });
+}
