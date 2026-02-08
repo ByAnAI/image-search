@@ -15,7 +15,7 @@ import ruLocale from "i18n-iso-countries/langs/ru.json";
 import { City, Country } from "country-state-city";
 import { useLocale } from "@/contexts/LocaleContext";
 import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
-import { extractImageFeatures } from "@/lib/imageFeatures";
+import { extractImageFeatures, resizeImageFile } from "@/lib/imageFeatures";
 
 countries.registerLocale(enLocale);
 countries.registerLocale(arLocale);
@@ -240,9 +240,10 @@ export function StoreDashboard() {
     setUploadError("");
     setUploading(true);
     try {
-      const featureVector = await extractImageFeatures(file);
+      const resizedFile = await resizeImageFile(file);
+      const featureVector = await extractImageFeatures(resizedFile);
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", resizedFile);
       formData.append("storeEmail", email);
       formData.append("storeId", storeId);
       formData.append("category", productCategory);

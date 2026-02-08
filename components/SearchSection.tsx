@@ -7,7 +7,7 @@ import enLocale from "i18n-iso-countries/langs/en.json";
 import { City, Country } from "country-state-city";
 import { useLocale } from "@/contexts/LocaleContext";
 import { PRODUCT_CATEGORIES } from "@/lib/productCategories";
-import { extractImageFeatures } from "@/lib/imageFeatures";
+import { extractImageFeatures, resizeImageFile } from "@/lib/imageFeatures";
 
 countries.registerLocale(enLocale);
 
@@ -102,7 +102,8 @@ export function SearchSection() {
     setSearchError("");
     setSearching(true);
     try {
-      const featureVector = await extractImageFeatures(file);
+      const resizedFile = await resizeImageFile(file);
+      const featureVector = await extractImageFeatures(resizedFile);
       const response = await fetch("/api/search/image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

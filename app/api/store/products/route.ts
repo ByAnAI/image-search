@@ -100,7 +100,13 @@ export async function POST(request: Request) {
     });
 
   if (uploadError) {
-    return Response.json({ error: "Could not upload image." }, { status: 500 });
+    return Response.json(
+      {
+        error: "Could not upload image.",
+        details: uploadError.message,
+      },
+      { status: 500 }
+    );
   }
 
   const { data: publicUrlData } = supabaseAdmin.storage
