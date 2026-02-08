@@ -40,8 +40,8 @@ export function SearchSection() {
   }, [preview]);
 
   return (
-    <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
-      <h2 className="text-lg font-semibold text-slate-800 mb-3">
+    <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-6 sm:p-8">
+      <h2 className="text-lg font-semibold text-slate-100 mb-3">
         {t("searchSection.uploadYourImage")}
       </h2>
 
@@ -53,7 +53,7 @@ export function SearchSection() {
           onDrop={handleDrop}
           className={`
             flex flex-col items-center justify-center w-full h-40 rounded-xl border-2 border-dashed cursor-pointer transition-colors
-            ${dragActive ? "border-primary-500 bg-primary-50" : "border-slate-300 hover:border-slate-400 hover:bg-slate-50"}
+            ${dragActive ? "border-emerald-500 bg-emerald-500/10" : "border-white/10 hover:border-white/30 hover:bg-white/5"}
           `}
         >
           <input
@@ -75,7 +75,7 @@ export function SearchSection() {
               d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
             />
           </svg>
-          <span className="text-slate-600 font-medium -mt-1">
+          <span className="text-slate-200 font-medium -mt-1">
             {t("searchSection.dragOrClick")}
           </span>
           <span className="text-slate-400 text-xs mt-1">
@@ -84,7 +84,7 @@ export function SearchSection() {
         </label>
       ) : (
         <div className="space-y-4">
-          <div className="relative inline-block rounded-xl overflow-hidden border border-slate-200 max-h-72">
+          <div className="relative inline-block rounded-xl overflow-hidden border border-white/10 max-h-72">
             <div className="relative h-72 w-[20rem] sm:w-[24rem]">
               <Image
                 src={preview}
@@ -97,7 +97,7 @@ export function SearchSection() {
             <button
               type="button"
               onClick={clearImage}
-              className="absolute top-2 right-2 p-2 rounded-lg bg-white/90 hover:bg-white shadow text-slate-600 hover:text-slate-900 transition-colors"
+              className="absolute top-2 right-2 p-2 rounded-lg bg-slate-950/80 hover:bg-slate-900 shadow text-slate-200 hover:text-white transition-colors"
               aria-label={t("searchSection.removeImage")}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,14 +108,14 @@ export function SearchSection() {
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              className="px-5 py-2.5 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors"
+              className="px-5 py-2.5 rounded-xl font-semibold bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 transition-colors"
             >
               {t("searchSection.searchSimilar")}
             </button>
             <button
               type="button"
               onClick={clearImage}
-              className="px-5 py-2.5 rounded-lg font-medium border border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors"
+              className="px-5 py-2.5 rounded-xl font-medium border border-white/10 text-slate-200 hover:bg-white/10 transition-colors"
             >
               {t("searchSection.chooseAnother")}
             </button>
@@ -123,7 +123,7 @@ export function SearchSection() {
         </div>
       )}
 
-      <p className="mt-3 text-slate-500 text-sm">
+      <p className="mt-3 text-slate-400 text-sm">
         {t("searchSection.searchFree")}
       </p>
     </section>

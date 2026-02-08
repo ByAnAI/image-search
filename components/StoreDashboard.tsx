@@ -186,18 +186,18 @@ export function StoreDashboard() {
 
   return (
     <div className="space-y-8">
-      <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+      <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
         <h2 className="text-lg font-semibold text-slate-800 mb-4">
           {t("storeProfile.title")}
         </h2>
         {loadingProfile ? (
-          <p className="text-slate-500 text-sm">{t("storeProfile.loading")}</p>
+          <p className="text-slate-400 text-sm">{t("storeProfile.loading")}</p>
         ) : !email ? (
-          <p className="text-slate-500 text-sm">{t("storeProfile.signInFirst")}</p>
+          <p className="text-slate-400 text-sm">{t("storeProfile.signInFirst")}</p>
         ) : (
           <form onSubmit={handleSaveProfile} className="space-y-5">
             <div>
-              <label htmlFor="profile-email" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-email" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.email")}
               </label>
               <input
@@ -205,11 +205,11 @@ export function StoreDashboard() {
                 type="email"
                 value={email}
                 readOnly
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-100 text-slate-600"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300"
               />
             </div>
             <div>
-              <label htmlFor="profile-store" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-store" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.storeName")}
               </label>
               <input
@@ -218,12 +218,12 @@ export function StoreDashboard() {
                 value={storeName}
                 onChange={(e) => setStoreName(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
                 placeholder={t("register.storePlaceholder")}
               />
             </div>
             <div>
-              <label htmlFor="profile-country" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-country" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.country")}
               </label>
               <select
@@ -234,7 +234,7 @@ export function StoreDashboard() {
                   setCity("");
                 }}
                 required
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
               >
                 <option value="" disabled>
                   {t("register.selectCountry")}
@@ -247,7 +247,7 @@ export function StoreDashboard() {
               </select>
             </div>
             <div>
-              <label htmlFor="profile-city" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-city" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.city")}
               </label>
               <select
@@ -256,7 +256,7 @@ export function StoreDashboard() {
                 onChange={(e) => setCity(e.target.value)}
                 required
                 disabled={!selectedCountry}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors disabled:bg-slate-100 disabled:text-slate-500"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors disabled:bg-slate-800 disabled:text-slate-500"
               >
                 <option value="" disabled>
                   {t("register.selectCity")}
@@ -269,7 +269,7 @@ export function StoreDashboard() {
               </select>
             </div>
             <div>
-              <label htmlFor="profile-website" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-website" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.website")}
               </label>
               <input
@@ -277,16 +277,16 @@ export function StoreDashboard() {
                 type="url"
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
                 placeholder={t("register.websitePlaceholder")}
               />
             </div>
             <div>
-              <label htmlFor="profile-phone" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="profile-phone" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("register.phone")}
               </label>
               <div className="flex">
-                <span className="inline-flex items-center px-3 rounded-l-lg border border-slate-300 bg-slate-100 text-slate-700 text-sm">
+                <span className="inline-flex items-center px-3 rounded-l-xl border border-white/10 bg-slate-900/60 text-slate-300 text-sm">
                   {selectedCountry?.phonecode ? `+${selectedCountry.phonecode}` : "+"}
                 </span>
                 <input
@@ -294,30 +294,30 @@ export function StoreDashboard() {
                   type="tel"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-r-lg border border-slate-300 border-l-0 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                  className="w-full px-4 py-2.5 rounded-r-xl border border-white/10 border-l-0 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
                   placeholder={t("register.phonePlaceholder")}
                 />
               </div>
             </div>
-            {profileError ? <p className="text-sm text-red-600">{profileError}</p> : null}
+            {profileError ? <p className="text-sm text-rose-300">{profileError}</p> : null}
             {profileMessage ? (
-              <p className="text-sm text-emerald-600">{profileMessage}</p>
+              <p className="text-sm text-emerald-300">{profileMessage}</p>
             ) : null}
             <button
               type="submit"
               disabled={savingProfile}
-              className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors disabled:opacity-70"
+              className="w-full py-3 rounded-xl font-semibold bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 transition-colors disabled:opacity-70"
             >
               {savingProfile ? t("storeProfile.saving") : t("storeProfile.save")}
             </button>
           </form>
         )}
       </section>
-      <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-        <h2 className="text-lg font-semibold text-slate-800 mb-4">
+      <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
+        <h2 className="text-lg font-semibold text-slate-100 mb-4">
           {t("storeDashboard.addProductImage")}
         </h2>
-        <p className="text-slate-600 text-sm mb-4">
+        <p className="text-slate-400 text-sm mb-4">
           {t("storeDashboard.addProductDescription")}
         </p>
         <label
@@ -327,7 +327,7 @@ export function StoreDashboard() {
           onDrop={handleDrop}
           className={`
             flex flex-col items-center justify-center w-full h-40 rounded-xl border-2 border-dashed cursor-pointer transition-colors
-            ${dragActive ? "border-primary-500 bg-primary-50" : "border-slate-300 hover:border-slate-400 hover:bg-slate-50"}
+            ${dragActive ? "border-emerald-500 bg-emerald-500/10" : "border-white/10 hover:border-white/30 hover:bg-white/5"}
           `}
         >
           <input
@@ -352,17 +352,17 @@ export function StoreDashboard() {
               d="M12 4v16m8-8H4"
             />
           </svg>
-          <span className="text-slate-600 font-medium">
+          <span className="text-slate-200 font-medium">
             {t("storeDashboard.dragOrClick")}
           </span>
         </label>
       </section>
 
-      <section className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-        <h2 className="text-lg font-semibold text-slate-800 mb-4">
+      <section className="bg-slate-900/80 rounded-2xl border border-white/10 shadow-lg shadow-black/40 p-8">
+        <h2 className="text-lg font-semibold text-slate-100 mb-4">
           {t("storeDashboard.yourProducts")}
         </h2>
-        <p className="text-slate-500 text-sm">
+        <p className="text-slate-400 text-sm">
           {t("storeDashboard.noProducts")}
         </p>
       </section>

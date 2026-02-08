@@ -14,14 +14,18 @@ export default function StoreAuthPage() {
   const [success, setSuccess] = useState<Mode | null>(null);
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-blue-100 to-sky-100">
+    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900">{t("storeAuth.title")}</h1>
-          <p className="text-slate-600 mt-1">{t("storeAuth.subtitle")}</p>
+          <p className="text-sm uppercase tracking-[0.2em] text-slate-300">
+            {t("storeAuth.title")}
+          </p>
+          <h1 className="text-3xl font-semibold text-white mt-2">
+            {t("storeAuth.subtitle")}
+          </h1>
         </div>
 
-        <div className="flex rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden mb-6">
+        <div className="flex rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg shadow-black/40 overflow-hidden mb-6">
           <button
             type="button"
             onClick={() => {
@@ -30,8 +34,8 @@ export default function StoreAuthPage() {
             }}
             className={`flex-1 text-center py-2.5 text-sm font-semibold transition-colors ${
               mode === "signin"
-                ? "bg-green-500 text-white"
-                : "text-slate-600 hover:bg-slate-50"
+                ? "bg-emerald-500 text-white shadow-sm shadow-emerald-500/20"
+                : "text-slate-200 hover:bg-white/10"
             }`}
           >
             {t("storeAuth.signInTab")}
@@ -44,15 +48,15 @@ export default function StoreAuthPage() {
             }}
             className={`flex-1 text-center py-2.5 text-sm font-semibold transition-colors ${
               mode === "signup"
-                ? "bg-green-500 text-white"
-                : "text-slate-600 hover:bg-slate-50"
+                ? "bg-emerald-500 text-white shadow-sm shadow-emerald-500/20"
+                : "text-slate-200 hover:bg-white/10"
             }`}
           >
             {t("storeAuth.signUpTab")}
           </button>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-8">
+        <div className="bg-slate-900/90 rounded-3xl border border-white/10 shadow-lg shadow-black/50 p-8">
           {mode === "signin" ? (
             <LoginForm onSuccess={() => setSuccess("signin")} />
           ) : (
@@ -61,20 +65,20 @@ export default function StoreAuthPage() {
         </div>
 
         {success ? (
-          <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-700 text-center">
+          <div className="mt-5 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-3 text-sm text-emerald-200 text-center shadow-sm shadow-black/30">
             <p className="mb-2">
               {success === "signin"
                 ? t("storeAuth.signInSuccess")
                 : t("storeAuth.signUpSuccess")}
             </p>
-            <Link href="/store/dashboard" className="font-semibold text-emerald-800 hover:underline">
+            <Link href="/store/dashboard" className="font-semibold text-emerald-200 hover:underline">
               {t("storeAuth.completeProfile")}
             </Link>
           </div>
         ) : null}
 
-        <p className="mt-6 text-center text-slate-600 text-sm">
-          <Link href="/" className="text-primary-600 hover:text-primary-700 font-medium">
+        <p className="mt-6 text-center text-slate-300 text-sm">
+          <Link href="/" className="text-emerald-200 hover:text-white font-medium">
             {t("storeAuth.backToSearch")}
           </Link>
         </p>

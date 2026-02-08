@@ -13,12 +13,12 @@ export default function HomePage() {
 
       <ProductCategories />
 
-      <section className="mt-16 text-center text-slate-500 text-sm">
+      <section className="mt-12 text-center text-slate-400 text-sm">
         <p>
           {t("home.businessOwner")}{" "}
           <Link
             href="/store/auth"
-            className="text-primary-600 hover:text-primary-700 font-medium"
+            className="text-emerald-300 hover:text-emerald-200 font-medium"
           >
             {t("home.addYourStore")}
           </Link>

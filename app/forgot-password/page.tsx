@@ -17,17 +17,17 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12">
+    <div className="min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900">{t("forgot.title")}</h1>
-          <p className="text-slate-600 mt-1">{t("forgot.subtitle")}</p>
+          <h1 className="text-2xl font-bold text-white">{t("forgot.title")}</h1>
+          <p className="text-slate-300 mt-1">{t("forgot.subtitle")}</p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+        <div className="bg-slate-900/90 rounded-3xl border border-white/10 shadow-lg shadow-black/50 p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="forgot-email" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="forgot-email" className="block text-sm font-medium text-slate-200 mb-1">
                 {t("login.email")}
               </label>
               <input
@@ -37,13 +37,13 @@ export default function ForgotPasswordPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+                className="w-full px-4 py-2.5 rounded-xl border border-white/10 bg-slate-900/60 text-white placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-colors"
                 placeholder={t("login.emailPlaceholder")}
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-lg font-semibold bg-primary-500 text-sciwiz-dark hover:bg-primary-600 transition-colors"
+              className="w-full py-3 rounded-xl font-semibold bg-emerald-500 text-white hover:bg-emerald-600 shadow-md shadow-emerald-500/20 transition-colors"
             >
               {t("forgot.submit")}
             </button>
@@ -51,11 +51,11 @@ export default function ForgotPasswordPage() {
         </div>
 
         {submitted ? (
-          <p className="mt-4 text-center text-sm text-slate-600">{t("forgot.sentNotice")}</p>
+          <p className="mt-4 text-center text-sm text-slate-300">{t("forgot.sentNotice")}</p>
         ) : null}
 
-        <p className="mt-6 text-center text-slate-600 text-sm">
-          <Link href="/login" className="text-primary-600 hover:text-primary-700 font-medium">
+        <p className="mt-6 text-center text-slate-300 text-sm">
+          <Link href="/login" className="text-emerald-200 hover:text-white font-medium">
             {t("forgot.backToLogin")}
           </Link>
         </p>
