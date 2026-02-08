@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "Phone:",
+    "websiteLabel": "Visit website"
   },
   "storeDashboard": {
     "title": "Store dashboard",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "Complete your profile before uploading products.",
     "yourProducts": "Your products",
     "productImageAlt": "Product image",
+    "deleteImage": "Delete",
+    "deletingImage": "Deleting...",
+    "deleteError": "Could not delete the product image.",
     "noProducts": "No products yet."
   }
 }

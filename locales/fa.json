@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "تلفن:",
+    "websiteLabel": "مشاهده وب‌سایت"
   },
   "storeDashboard": {
     "title": "داشبورد فروشگاه",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "قبل از بارگذاری محصولات، پروفایل را کامل کنید.",
     "yourProducts": "محصولات شما",
     "productImageAlt": "Product image",
+    "deleteImage": "حذف",
+    "deletingImage": "در حال حذف...",
+    "deleteError": "امکان حذف تصویر محصول نیست.",
     "noProducts": "هنوز محصولی وجود ندارد."
   }
 }

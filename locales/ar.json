@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "الهاتف:",
+    "websiteLabel": "زيارة الموقع"
   },
   "storeDashboard": {
     "title": "لوحة تحكم المتجر",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "أكمل ملفك قبل رفع المنتجات.",
     "yourProducts": "منتجاتك",
     "productImageAlt": "Product image",
+    "deleteImage": "حذف",
+    "deletingImage": "جارٍ الحذف...",
+    "deleteError": "تعذر حذف صورة المنتج.",
     "noProducts": "لا توجد منتجات بعد."
   }
 }

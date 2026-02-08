@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "Telefono:",
+    "websiteLabel": "Visita il sito"
   },
   "storeDashboard": {
     "title": "Dashboard del negozio",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "Completa il profilo prima di caricare i prodotti.",
     "yourProducts": "I tuoi prodotti",
     "productImageAlt": "Product image",
+    "deleteImage": "Elimina",
+    "deletingImage": "Eliminazione...",
+    "deleteError": "Impossibile eliminare l'immagine del prodotto.",
     "noProducts": "Nessun prodotto al momento."
   }
 }

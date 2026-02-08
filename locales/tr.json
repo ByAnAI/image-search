@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "Telefon:",
+    "websiteLabel": "Web sitesini aç"
   },
   "storeDashboard": {
     "title": "Mağaza paneli",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "Ürün yüklemeden önce profilinizi tamamlayın.",
     "yourProducts": "Ürünleriniz",
     "productImageAlt": "Product image",
+    "deleteImage": "Sil",
+    "deletingImage": "Siliniyor...",
+    "deleteError": "Ürün görseli silinemedi.",
     "noProducts": "Henüz ürün yok."
   }
 }

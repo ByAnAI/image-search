@@ -303,6 +303,21 @@ export function SearchSection() {
                       ? `, ${countryNameMap.get(result.store.country) ?? result.store.country}`
                       : ""}
                   </p>
+                  {result.store?.phone ? (
+                    <p className="text-xs text-slate-300 mt-1">
+                      {t("searchSection.phoneLabel")} {result.store.phone}
+                    </p>
+                  ) : null}
+                  {result.store?.website ? (
+                    <a
+                      href={result.store.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-emerald-200 hover:text-emerald-100 mt-1 inline-flex"
+                    >
+                      {t("searchSection.websiteLabel")}
+                    </a>
+                  ) : null}
                   <p className="text-xs text-slate-500 mt-1">
                     {t("searchSection.similarityLabel")}{" "}
                     {Math.round(result.similarity * 100)}%

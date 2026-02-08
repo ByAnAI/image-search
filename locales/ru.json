@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "Телефон:",
+    "websiteLabel": "Перейти на сайт"
   },
   "storeDashboard": {
     "title": "Панель магазина",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "Сначала заполните профиль, чтобы загружать товары.",
     "yourProducts": "Ваши товары",
     "productImageAlt": "Product image",
+    "deleteImage": "Удалить",
+    "deletingImage": "Удаление...",
+    "deleteError": "Не удалось удалить изображение товара.",
     "noProducts": "Товаров пока нет."
   }
 }

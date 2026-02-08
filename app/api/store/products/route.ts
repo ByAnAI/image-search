@@ -32,6 +32,17 @@ async function getEmailByStoreId(storeId: string) {
   return data?.email ?? null;
 }
 
+function getStoragePathFromUrl(url: string) {
+  try {
+    const parsed = new URL(url);
+    const prefix = "/storage/v1/object/public/product-images/";
+    if (!parsed.pathname.startsWith(prefix)) return null;
+    return parsed.pathname.slice(prefix.length);
+  } catch {
+    return null;
+  }
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const storeIdParam = searchParams.get("storeId")?.trim();
@@ -56,6 +67,60 @@ export async function GET(request: Request) {
     return Response.json({ error: "Could not load products." }, { status: 500 });
   }
   return Response.json({ items: data ?? [] });
+}
+
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id")?.trim();
+  const storeIdParam = searchParams.get("storeId")?.trim();
+  const emailParam = searchParams.get("email")?.trim().toLowerCase();
+
+  if (!id) {
+    return Response.json({ error: "Missing image id." }, { status: 400 });
+  }
+
+  let storeId = storeIdParam ?? "";
+  if (!storeId) {
+    if (!emailParam) {
+      return Response.json({ error: "Missing store ID or email." }, { status: 400 });
+    }
+    const resolvedId = await getStoreIdByEmail(emailParam);
+    if (!resolvedId) {
+      return Response.json({ error: "Store not found." }, { status: 404 });
+    }
+    storeId = resolvedId;
+  }
+
+  const { data: image, error: loadError } = await supabaseAdmin
+    .from("product_images")
+    .select("id, image_url")
+    .eq("id", id)
+    .eq("store_id", storeId)
+    .maybeSingle();
+
+  if (loadError) {
+    return Response.json({ error: "Could not load image." }, { status: 500 });
+  }
+  if (!image) {
+    return Response.json({ error: "Image not found." }, { status: 404 });
+  }
+
+  const { error } = await supabaseAdmin
+    .from("product_images")
+    .delete()
+    .eq("id", id)
+    .eq("store_id", storeId);
+
+  if (error) {
+    return Response.json({ error: "Could not delete image." }, { status: 500 });
+  }
+
+  const storagePath = getStoragePathFromUrl(image.image_url);
+  if (storagePath) {
+    await supabaseAdmin.storage.from("product-images").remove([storagePath]);
+  }
+
+  return Response.json({ ok: true });
 }
 
 export async function POST(request: Request) {

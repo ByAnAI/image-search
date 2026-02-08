@@ -68,6 +68,8 @@ export function StoreDashboard() {
   const [productCategory, setProductCategory] = useState("");
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [deleteError, setDeleteError] = useState("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [productItems, setProductItems] = useState<
     { id: string; category: string; image_url: string; created_at: string }[]
   >([]);
@@ -268,6 +270,28 @@ export function StoreDashboard() {
       setUploadError(t("storeDashboard.uploadError"));
     } finally {
       setUploading(false);
+    }
+  };
+
+  const handleDeleteProduct = async (id: string) => {
+    if (!storeId) return;
+    setDeleteError("");
+    setDeletingId(id);
+    try {
+      const response = await fetch(
+        `/api/store/products?id=${encodeURIComponent(id)}&storeId=${encodeURIComponent(storeId)}`,
+        { method: "DELETE" }
+      );
+      if (!response.ok) {
+        const data = (await response.json().catch(() => ({}))) as { error?: string };
+        setDeleteError(data.error ?? t("storeDashboard.deleteError"));
+        return;
+      }
+      setProductItems((prev) => prev.filter((item) => item.id !== id));
+    } catch {
+      setDeleteError(t("storeDashboard.deleteError"));
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -490,6 +514,7 @@ export function StoreDashboard() {
         <h2 className="text-lg font-semibold text-slate-100 mb-4">
           {t("storeDashboard.yourProducts")}
         </h2>
+        {deleteError ? <p className="text-sm text-rose-300 mb-3">{deleteError}</p> : null}
         {productItems.length ? (
           <div className="grid gap-4 sm:grid-cols-2">
             {productItems.map((item) => (
@@ -499,6 +524,16 @@ export function StoreDashboard() {
               >
                 <div className="relative h-40 w-full rounded-xl overflow-hidden border border-white/10">
                   <Image src={item.image_url} alt={t("storeDashboard.productImageAlt")} fill className="object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteProduct(item.id)}
+                    disabled={deletingId === item.id}
+                    className="absolute top-2 right-2 rounded-lg bg-slate-950/80 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600 transition-colors disabled:opacity-60"
+                  >
+                    {deletingId === item.id
+                      ? t("storeDashboard.deletingImage")
+                      : t("storeDashboard.deleteImage")}
+                  </button>
                 </div>
                 <p className="mt-2 text-sm text-slate-200">
                   {t(

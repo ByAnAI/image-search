@@ -164,7 +164,9 @@
     "resultImageAlt": "Similar product",
     "unknownStore": "Store",
     "unknownCity": "Unknown city",
-    "similarityLabel": "Similarity"
+    "similarityLabel": "Similarity",
+    "phoneLabel": "Téléphone :",
+    "websiteLabel": "Voir le site"
   },
   "storeDashboard": {
     "title": "Tableau de bord du magasin",
@@ -181,6 +183,9 @@
     "completeProfileFirst": "Complétez votre profil avant d'ajouter des produits.",
     "yourProducts": "Vos produits",
     "productImageAlt": "Product image",
+    "deleteImage": "Supprimer",
+    "deletingImage": "Suppression...",
+    "deleteError": "Impossible de supprimer l'image du produit.",
     "noProducts": "Aucun produit pour l'instant."
   }
 }
